@@ -1,4 +1,4 @@
-package gay.mountainspring.aquifer.util;
+package gay.mountainspring.aquifer.mixin;
 
 import gay.mountainspring.aquifer.item.component.AquiferComponentTypes;
 import net.fabricmc.fabric.api.item.v1.FabricItem;

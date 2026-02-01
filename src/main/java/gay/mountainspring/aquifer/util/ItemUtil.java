@@ -43,62 +43,7 @@ import net.minecraft.util.Rarity;
 public class ItemUtil {
 	private ItemUtil() {}
 	
-	public static void init () {
-		addItemTagDamageHandler(AquiferTags.Items.FIRE_PROOF, DamageTypeTags.IS_FIRE);
-		addItemTagDamageHandler(AquiferTags.Items.EXPLOSION_PROOF, DamageTypeTags.IS_EXPLOSION);
-		addItemTagDamageHandler(AquiferTags.Items.CACTUS_PROOF, DamageTypes.CACTUS);
-		
-		DefaultItemComponentEvents.MODIFY.register(context -> {
-			context.modify(item -> item.getDefaultStack().getComponents().contains(DataComponentTypes.FOOD), (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.DRINK_SOUND, () -> AquiferComponentTypes.DEFAULT_DRINK_SOUND);
-				builder.getOrCreate(AquiferComponentTypes.EAT_SOUND, () -> AquiferComponentTypes.DEFAULT_EAT_SOUND);
-			});
-			context.modify(item -> item instanceof ShearsItem, (builder, item) -> {
-				ToolComponent component = builder.getOrDefault(DataComponentTypes.TOOL, ShearsItem.createToolComponent());
-				List<ToolComponent.Rule> rules = component.rules().stream().collect(Collectors.toList());
-				float f = component.defaultMiningSpeed();
-				int i = component.damagePerBlock();
-				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_FAST, 15.0f));
-				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_MEDIUM, 5.0f));
-				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_SLOW, 2.0f));
-				builder.add(DataComponentTypes.TOOL, new ToolComponent(ImmutableList.copyOf(rules), f, i));
-				builder.add(AquiferComponentTypes.BREAK_SOUND, AquiferComponentTypes.DEFAULT_BREAK_SOUND);
-			});
-			context.modify(item -> item instanceof ArmorItem, (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> AquiferComponentTypes.DEFAULT_BREAK_SOUND);
-				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> ((ArmorItem) item).getMaterial().value().enchantability());
-			});
-			context.modify(item -> item instanceof ToolItem, (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> AquiferComponentTypes.DEFAULT_BREAK_SOUND);
-				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> ((ToolItem) item).getMaterial().getEnchantability());
-			});
-			context.modify(item -> item instanceof BookItem || item instanceof FishingRodItem || item instanceof MaceItem || item instanceof RangedWeaponItem || item instanceof TridentItem, (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> item.getEnchantability());
-			});
-		});
-		
-		FuelRegistry reg = FuelRegistry.INSTANCE;
-		
-		reg.add(AquiferTags.Items.BOOKSHELVES, 300);
-		reg.add(AquiferTags.Items.CARTOGRAPHY_TABLES, 300);
-		reg.add(AquiferTags.Items.COMPOSTERS, 300);
-		reg.add(AquiferTags.Items.CRAFTING_TABLES, 300);
-		reg.add(AquiferTags.Items.FLETCHING_TABLES, 300);
-		reg.add(AquiferTags.Items.LECTERNS, 300);
-		reg.add(AquiferTags.Items.LOOMS, 300);
-		reg.add(AquiferTags.Items.SMITHING_TABLES, 300);
-		reg.add(AquiferTags.Items.STICKS, 100);
-		reg.add(AquiferTags.Items.WOODEN_BARRELS, 300);
-		reg.add(AquiferTags.Items.WOODEN_CHESTS, 300);
-		reg.add(AquiferTags.Items.WOODEN_FENCE_GATES, 300);
-		reg.remove(ItemTags.FENCE_GATES);
-		reg.add(AquiferTags.Items.WOODEN_HANGING_SIGNS, 800);
-		reg.remove(ItemTags.HANGING_SIGNS);
-		reg.add(AquiferTags.Items.WOODEN_LADDERS, 300);
-		reg.add(AquiferTags.Items.WOODEN_SIGNS, 200);
-		reg.remove(ItemTags.SIGNS);
-		reg.add(AquiferTags.Items.WOODEN_WALLS, 300);
-	}
+	public static void init() {}
 	
 	private static final Map<TagKey<Item>, Predicate<DamageSource>> ITEM_TAG_DAMAGE_HANDLERS = Maps.newHashMap();
 	
@@ -173,5 +118,62 @@ public class ItemUtil {
 				builder.addAll(components);
 			});
 		});
+	}
+	
+	static {
+		addItemTagDamageHandler(AquiferTags.Items.FIRE_PROOF, DamageTypeTags.IS_FIRE);
+		addItemTagDamageHandler(AquiferTags.Items.EXPLOSION_PROOF, DamageTypeTags.IS_EXPLOSION);
+		addItemTagDamageHandler(AquiferTags.Items.CACTUS_PROOF, DamageTypes.CACTUS);
+		
+		DefaultItemComponentEvents.MODIFY.register(context -> {
+			context.modify(item -> item.getDefaultStack().getComponents().contains(DataComponentTypes.FOOD), (builder, item) -> {
+				builder.getOrCreate(AquiferComponentTypes.DRINK_SOUND, () -> AquiferComponentTypes.DEFAULT_DRINK_SOUND);
+				builder.getOrCreate(AquiferComponentTypes.EAT_SOUND, () -> AquiferComponentTypes.DEFAULT_EAT_SOUND);
+			});
+			context.modify(item -> item instanceof ShearsItem, (builder, item) -> {
+				ToolComponent component = builder.getOrDefault(DataComponentTypes.TOOL, ShearsItem.createToolComponent());
+				List<ToolComponent.Rule> rules = component.rules().stream().collect(Collectors.toList());
+				float f = component.defaultMiningSpeed();
+				int i = component.damagePerBlock();
+				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_FAST, 15.0f));
+				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_MEDIUM, 5.0f));
+				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_SLOW, 2.0f));
+				builder.add(DataComponentTypes.TOOL, new ToolComponent(ImmutableList.copyOf(rules), f, i));
+				builder.add(AquiferComponentTypes.BREAK_SOUND, AquiferComponentTypes.DEFAULT_BREAK_SOUND);
+			});
+			context.modify(item -> item instanceof ArmorItem, (builder, item) -> {
+				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> AquiferComponentTypes.DEFAULT_BREAK_SOUND);
+				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> ((ArmorItem) item).getMaterial().value().enchantability());
+			});
+			context.modify(item -> item instanceof ToolItem, (builder, item) -> {
+				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> AquiferComponentTypes.DEFAULT_BREAK_SOUND);
+				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> ((ToolItem) item).getMaterial().getEnchantability());
+			});
+			context.modify(item -> item instanceof BookItem || item instanceof FishingRodItem || item instanceof MaceItem || item instanceof RangedWeaponItem || item instanceof TridentItem, (builder, item) -> {
+				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> item.getEnchantability());
+			});
+		});
+		
+		FuelRegistry reg = FuelRegistry.INSTANCE;
+		
+		reg.add(AquiferTags.Items.BOOKSHELVES, 300);
+		reg.add(AquiferTags.Items.CARTOGRAPHY_TABLES, 300);
+		reg.add(AquiferTags.Items.COMPOSTERS, 300);
+		reg.add(AquiferTags.Items.CRAFTING_TABLES, 300);
+		reg.add(AquiferTags.Items.FLETCHING_TABLES, 300);
+		reg.add(AquiferTags.Items.LECTERNS, 300);
+		reg.add(AquiferTags.Items.LOOMS, 300);
+		reg.add(AquiferTags.Items.SMITHING_TABLES, 300);
+		reg.add(AquiferTags.Items.STICKS, 100);
+		reg.add(AquiferTags.Items.WOODEN_BARRELS, 300);
+		reg.add(AquiferTags.Items.WOODEN_CHESTS, 300);
+		reg.add(AquiferTags.Items.WOODEN_FENCE_GATES, 300);
+		reg.remove(ItemTags.FENCE_GATES);
+		reg.add(AquiferTags.Items.WOODEN_HANGING_SIGNS, 800);
+		reg.remove(ItemTags.HANGING_SIGNS);
+		reg.add(AquiferTags.Items.WOODEN_LADDERS, 300);
+		reg.add(AquiferTags.Items.WOODEN_SIGNS, 200);
+		reg.remove(ItemTags.SIGNS);
+		reg.add(AquiferTags.Items.WOODEN_WALLS, 300);
 	}
  }

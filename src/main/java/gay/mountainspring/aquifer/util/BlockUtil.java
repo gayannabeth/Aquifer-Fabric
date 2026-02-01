@@ -32,18 +32,7 @@ import net.minecraft.world.poi.PointOfInterestType;
 public class BlockUtil {
 	private BlockUtil() {}
 	
-	public static void init () {
-		FlammableBlockRegistry reg = FlammableBlockRegistry.getDefaultInstance();
-		reg.add(AquiferTags.Blocks.WOODEN_FENCE_GATES, 5, 20);
-		reg.add(AquiferTags.Blocks.LEAF_CARPETS, 30, 60);
-		reg.add(AquiferTags.Blocks.LEAF_SLABS, 30, 60);
-		reg.add(AquiferTags.Blocks.LEAF_STAIRS, 30, 60);
-		reg.add(AquiferTags.Blocks.LEAF_WALLS, 30, 60);
-		reg.add(AquiferTags.Blocks.BOOKSHELVES, 30, 20);
-		reg.add(AquiferTags.Blocks.LECTERNS, 30, 20);
-		reg.add(AquiferTags.Blocks.COMPOSTERS, 5, 20);
-		reg.add(AquiferTags.Blocks.CRAFTED_BEEHIVES, 5, 20);
-	}
+	public static void init () {}
 	
 	private static final Map<RegistryKey<PointOfInterestType>, Set<BlockState>> POI_SUPPORTED_BLOCKS = Maps.newHashMap();
 	
@@ -242,5 +231,18 @@ public class BlockUtil {
 	
 	public static boolean hasChestVariant(WoodType type) {
 		return type != null && HAS_CHEST_VARIANT.contains(type);
+	}
+	
+	static {
+		FlammableBlockRegistry reg = FlammableBlockRegistry.getDefaultInstance();
+		reg.add(AquiferTags.Blocks.WOODEN_FENCE_GATES, 5, 20);
+		reg.add(AquiferTags.Blocks.LEAF_CARPETS, 30, 60);
+		reg.add(AquiferTags.Blocks.LEAF_SLABS, 30, 60);
+		reg.add(AquiferTags.Blocks.LEAF_STAIRS, 30, 60);
+		reg.add(AquiferTags.Blocks.LEAF_WALLS, 30, 60);
+		reg.add(AquiferTags.Blocks.BOOKSHELVES, 30, 20);
+		reg.add(AquiferTags.Blocks.LECTERNS, 30, 20);
+		reg.add(AquiferTags.Blocks.COMPOSTERS, 5, 20);
+		reg.add(AquiferTags.Blocks.CRAFTED_BEEHIVES, 5, 20);
 	}
 }

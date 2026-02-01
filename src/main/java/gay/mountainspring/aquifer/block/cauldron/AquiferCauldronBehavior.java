@@ -35,68 +35,7 @@ import net.minecraft.world.event.GameEvent;
 public class AquiferCauldronBehavior {
 	private AquiferCauldronBehavior() {}
 	
-	private static boolean isInit = false;
-	
-	public static void init() {
-		if (isInit) return;
-		isInit = true;
-		
-		var emptyMap = CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map();
-		initBucketBehaviors(emptyMap);
-		emptyMap.put(Items.POTION, AQUIFER_FILL_EMPTY_FROM_POTION);
-		
-		var waterMap = CauldronBehavior.WATER_CAULDRON_BEHAVIOR.map();
-		initBucketBehaviors(waterMap);
-		waterMap.put(Items.BUCKET, AQUIFER_EMPTY_WATER);
-		waterMap.put(Items.GLASS_BOTTLE, AQUIFER_EMPTY_WATER_WITH_GLASS_BOTTLE);
-		waterMap.put(Items.POTION, AQUIFER_FILL_EXISTING_WITH_WATER_FROM_WATER_BOTTLE);
-		waterMap.put(Items.LEATHER_BOOTS, AQUIFER_CLEAN_DYEABLE_ITEM);
-		waterMap.put(Items.LEATHER_LEGGINGS, AQUIFER_CLEAN_DYEABLE_ITEM);
-		waterMap.put(Items.LEATHER_CHESTPLATE, AQUIFER_CLEAN_DYEABLE_ITEM);
-		waterMap.put(Items.LEATHER_HELMET, AQUIFER_CLEAN_DYEABLE_ITEM);
-		waterMap.put(Items.LEATHER_HORSE_ARMOR, AQUIFER_CLEAN_DYEABLE_ITEM);
-		waterMap.put(Items.WOLF_ARMOR, AQUIFER_CLEAN_DYEABLE_ITEM);
-		waterMap.put(Items.WHITE_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.GRAY_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.BLACK_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.BLUE_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.BROWN_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.CYAN_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.GREEN_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.LIGHT_BLUE_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.LIGHT_GRAY_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.LIME_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.MAGENTA_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.ORANGE_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.PINK_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.PURPLE_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.RED_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.YELLOW_BANNER, AQUIFER_CLEAN_BANNER);
-		waterMap.put(Items.WHITE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.GRAY_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.BLACK_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.BLUE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.BROWN_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.CYAN_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.GREEN_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.LIGHT_BLUE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.LIGHT_GRAY_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.LIME_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.MAGENTA_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.ORANGE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.PINK_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.PURPLE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.RED_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		waterMap.put(Items.YELLOW_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
-		
-		var lavaMap = CauldronBehavior.LAVA_CAULDRON_BEHAVIOR.map();
-		initBucketBehaviors(lavaMap);
-		lavaMap.put(Items.BUCKET, AQUIFER_EMPTY_LAVA);
-		
-		var powderSnowMap = CauldronBehavior.POWDER_SNOW_CAULDRON_BEHAVIOR.map();
-		initBucketBehaviors(powderSnowMap);
-		powderSnowMap.put(Items.BUCKET, AQUIFER_EMPTY_POWDER_SNOW);
-	}
+	public static void init() {}
 	
 	private static void initBucketBehaviors(Map<Item, CauldronBehavior> map) {
 		map.put(Items.WATER_BUCKET, AQUIFER_FILL_WITH_WATER);
@@ -273,5 +212,63 @@ public class AquiferCauldronBehavior {
 			
 			return ItemActionResult.success(world.isClient);
 		}
+	}
+	
+	static {
+		var emptyMap = CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map();
+		initBucketBehaviors(emptyMap);
+		emptyMap.put(Items.POTION, AQUIFER_FILL_EMPTY_FROM_POTION);
+		
+		var waterMap = CauldronBehavior.WATER_CAULDRON_BEHAVIOR.map();
+		initBucketBehaviors(waterMap);
+		waterMap.put(Items.BUCKET, AQUIFER_EMPTY_WATER);
+		waterMap.put(Items.GLASS_BOTTLE, AQUIFER_EMPTY_WATER_WITH_GLASS_BOTTLE);
+		waterMap.put(Items.POTION, AQUIFER_FILL_EXISTING_WITH_WATER_FROM_WATER_BOTTLE);
+		waterMap.put(Items.LEATHER_BOOTS, AQUIFER_CLEAN_DYEABLE_ITEM);
+		waterMap.put(Items.LEATHER_LEGGINGS, AQUIFER_CLEAN_DYEABLE_ITEM);
+		waterMap.put(Items.LEATHER_CHESTPLATE, AQUIFER_CLEAN_DYEABLE_ITEM);
+		waterMap.put(Items.LEATHER_HELMET, AQUIFER_CLEAN_DYEABLE_ITEM);
+		waterMap.put(Items.LEATHER_HORSE_ARMOR, AQUIFER_CLEAN_DYEABLE_ITEM);
+		waterMap.put(Items.WOLF_ARMOR, AQUIFER_CLEAN_DYEABLE_ITEM);
+		waterMap.put(Items.WHITE_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.GRAY_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.BLACK_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.BLUE_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.BROWN_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.CYAN_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.GREEN_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.LIGHT_BLUE_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.LIGHT_GRAY_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.LIME_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.MAGENTA_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.ORANGE_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.PINK_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.PURPLE_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.RED_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.YELLOW_BANNER, AQUIFER_CLEAN_BANNER);
+		waterMap.put(Items.WHITE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.GRAY_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.BLACK_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.BLUE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.BROWN_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.CYAN_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.GREEN_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.LIGHT_BLUE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.LIGHT_GRAY_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.LIME_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.MAGENTA_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.ORANGE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.PINK_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.PURPLE_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.RED_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		waterMap.put(Items.YELLOW_SHULKER_BOX, AQUIFER_CLEAN_SHULKER_BOX);
+		
+		var lavaMap = CauldronBehavior.LAVA_CAULDRON_BEHAVIOR.map();
+		initBucketBehaviors(lavaMap);
+		lavaMap.put(Items.BUCKET, AQUIFER_EMPTY_LAVA);
+		
+		var powderSnowMap = CauldronBehavior.POWDER_SNOW_CAULDRON_BEHAVIOR.map();
+		initBucketBehaviors(powderSnowMap);
+		powderSnowMap.put(Items.BUCKET, AQUIFER_EMPTY_POWDER_SNOW);
 	}
 }

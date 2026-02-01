@@ -13,7 +13,19 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.TagKey;
 
 public class StatusEffectUtil {
-	public static void init() {
+	public static void init() {}
+	
+	private static final Map<RegistryEntry<StatusEffect>, TagKey<EntityType<?>>> EFFECT_IMMUNE_TAGS = Maps.newHashMap();
+	
+	public static void registerEffectImmuneTag(RegistryEntry<StatusEffect> effect, TagKey<EntityType<?>> tag) {
+		EFFECT_IMMUNE_TAGS.putIfAbsent(effect, tag);
+	}
+	
+	public static Map<RegistryEntry<StatusEffect>, TagKey<EntityType<?>>> effectImmuneTags() {
+		return ImmutableMap.copyOf(EFFECT_IMMUNE_TAGS);
+	}
+	
+	static {
 		registerEffectImmuneTag(StatusEffects.SPEED, AquiferTags.EntityTypes.SPEED_IMMUNE);
 		registerEffectImmuneTag(StatusEffects.SLOWNESS, AquiferTags.EntityTypes.SLOWNESS_IMMUNE);
 		registerEffectImmuneTag(StatusEffects.HASTE, AquiferTags.EntityTypes.HASTE_IMMUNE);
@@ -53,15 +65,5 @@ public class StatusEffectUtil {
 		registerEffectImmuneTag(StatusEffects.WEAVING, AquiferTags.EntityTypes.WEAVING_IMMUNE);
 		registerEffectImmuneTag(StatusEffects.OOZING, AquiferTags.EntityTypes.OOZING_IMMUNE);
 		registerEffectImmuneTag(StatusEffects.INFESTED, AquiferTags.EntityTypes.INFESTED_IMMUNE);
-	}
-	
-	private static final Map<RegistryEntry<StatusEffect>, TagKey<EntityType<?>>> EFFECT_IMMUNE_TAGS = Maps.newHashMap();
-	
-	public static void registerEffectImmuneTag(RegistryEntry<StatusEffect> effect, TagKey<EntityType<?>> tag) {
-		EFFECT_IMMUNE_TAGS.putIfAbsent(effect, tag);
-	}
-	
-	public static Map<RegistryEntry<StatusEffect>, TagKey<EntityType<?>>> effectImmuneTags() {
-		return ImmutableMap.copyOf(EFFECT_IMMUNE_TAGS);
 	}
 }

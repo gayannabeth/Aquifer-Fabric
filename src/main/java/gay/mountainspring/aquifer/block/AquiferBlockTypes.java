@@ -11,7 +11,9 @@ import net.minecraft.util.Identifier;
 public class AquiferBlockTypes {
 	private AquiferBlockTypes() {}
 	
-	public static void init() {
+	public static void init () {}
+	
+	static {
 		register("aquifer_cauldron", AquiferCauldronBlock.CODEC);
 		register("aquifer_fence_gate", AquiferFenceGateBlock.CODEC);
 		register("aquifer_lava_cauldron", AquiferLavaCauldronBlock.CODEC);
