@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "#side"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 14, 11],
+			"faces": {
+				"up": {"uv": [5, 5, 11, 11], "texture": "#top"},
+				"down": {"uv": [5, 5, 11, 11], "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	]
+}

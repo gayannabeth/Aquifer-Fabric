@@ -1,0 +1,51 @@
+{
+	"schemaVersion": 1,
+	"id": "aquifer",
+	"version": "${version}",
+	"name": "Aquifer",
+	"description": "Library containing shared code for our mods.",
+	"authors": [
+		"gayannabeth",
+		"Montanoceratops",
+		"Ashley"
+	],
+	"contact": {
+		"email": "mountainspring379@gmail.com",
+		"discord": "https://discord.gg/8KZvZHq"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/aquifer/icon.png",
+	"environment": "*",
+	"accessWidener" : "aquifer.classtweaker",
+	"entrypoints": {
+		"main": [
+			"gay.mountainspring.aquifer.Aquifer"
+		],
+		"client": [
+			"gay.mountainspring.aquifer.client.AquiferClient"
+		],
+		"fabric-datagen": [
+			"gay.mountainspring.aquifer.datagen.AquiferDataGen"
+		],
+		"modmenu": [
+			"gay.mountainspring.aquifer.client.modmenu.AquiferModMenu"
+		]
+	},
+	"mixins": [
+		"aquifer.mixins.json",
+		{
+			"config": "aquifer.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"		,
+		"cloth-config": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:netherrack",
+    "minecraft:soul_sand",
+    "minecraft:soul_soil",
+    "#aquifer:dirt_like",
+    "#aquifer:farmland_like",
+    "#c:netherracks"
+  ]
+}

@@ -1,0 +1,16 @@
+classTweaker v1 named
+transitive-inject-interface net/minecraft/block/AbstractPressurePlateBlock gay/mountainspring/aquifer/block/BlockSetTyped
+transitive-inject-interface net/minecraft/block/ButtonBlock gay/mountainspring/aquifer/block/BlockSetTyped
+transitive-inject-interface net/minecraft/block/DoorBlock gay/mountainspring/aquifer/block/BlockSetTyped
+transitive-inject-interface net/minecraft/block/FenceGateBlock gay/mountainspring/aquifer/block/BlockSetTyped
+transitive-inject-interface net/minecraft/block/TrapdoorBlock gay/mountainspring/aquifer/block/BlockSetTyped
+transitive-inject-interface net/minecraft/block/AbstractSignBlock gay/mountainspring/aquifer/block/WoodTyped
+transitive-inject-interface net/minecraft/block/FenceGateBlock gay/mountainspring/aquifer/block/WoodTyped
+transitive-inject-interface net/minecraft/block/AbstractChestBlock gay/mountainspring/aquifer/block/AquiferChestBlock
+transitive-inject-interface net/minecraft/block/CoralBlock gay/mountainspring/aquifer/block/Coral
+transitive-inject-interface net/minecraft/block/CoralBlockBlock gay/mountainspring/aquifer/block/Coral
+transitive-inject-interface net/minecraft/block/CoralFanBlock gay/mountainspring/aquifer/block/Coral
+transitive-inject-interface net/minecraft/block/CoralWallFanBlock gay/mountainspring/aquifer/block/Coral
+transitive-inject-interface net/minecraft/block/AbstractCauldronBlock gay/mountainspring/aquifer/block/AquiferCauldronExtensions
+transitive-inject-interface net/minecraft/block/LeveledCauldronBlock gay/mountainspring/aquifer/block/AquiferLeveledCauldronExtensions
+transitive-inject-interface net/minecraft/item/ItemStack gay/mountainspring/aquifer/item/AquiferItemStack

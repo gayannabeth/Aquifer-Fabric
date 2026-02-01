@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#aquifer:looms",
+    "#aquifer:cartography_tables",
+    "#aquifer:fletching_tables",
+    "#aquifer:smithing_tables",
+    "#aquifer:lecterns",
+    "#aquifer:composters",
+    "#aquifer:smokers",
+    "#aquifer:blast_furnaces",
+    "#aquifer:stonecutters",
+    "#aquifer:grindstones"
+  ]
+}

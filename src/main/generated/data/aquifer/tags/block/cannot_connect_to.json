@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:barrier",
+    "minecraft:carved_pumpkin",
+    "minecraft:jack_o_lantern",
+    "minecraft:melon",
+    "minecraft:pumpkin",
+    "#c:pumpkins",
+    "#minecraft:leaves",
+    "#minecraft:shulker_boxes",
+    "#aquifer:leaf_slabs",
+    "#aquifer:leaf_stairs"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "#side"
+	},
+	"elements": [
+		{
+			"name": "post_bottom",
+			"from": [4, 0, 4],
+			"to": [12, 0, 12],
+			"faces": {
+				"down": {"uv": [4, 4, 12, 12], "texture": "#bottom", "cullface": "down"}
+			}
+		},
+		{
+			"name": "post_top",
+			"from": [4, 13, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [4, 0, 12, 3], "texture": "#side"},
+				"east": {"uv": [4, 0, 12, 3], "texture": "#side"},
+				"south": {"uv": [4, 0, 12, 3], "texture": "#side"},
+				"west": {"uv": [4, 0, 12, 3], "texture": "#side"},
+				"up": {"uv": [4, 4, 12, 12], "texture": "#top", "cullface": "up"}
+			}
+		},
+		{
+			"name": "post_west",
+			"from": [4, 0, 4],
+			"to": [5, 13, 12],
+			"faces": {
+				"north": {"uv": [11, 3, 12, 16], "texture": "#side"},
+				"south": {"uv": [4, 3, 5, 16], "texture": "#side"},
+				"west": {"uv": [4, 3, 12, 16], "texture": "#side"}
+			}
+		},
+		{
+			"name": "post_east",
+			"from": [11, 0, 4],
+			"to": [12, 13, 12],
+			"faces": {
+				"north": {"uv": [4, 3, 5, 16], "texture": "#side"},
+				"east": {"uv": [4, 3, 12, 16], "texture": "#side"},
+				"south": {"uv": [11, 3, 12, 16], "texture": "#side"}
+			}
+		},
+		{
+			"name": "north",
+			"from": [5, 0, 0],
+			"to": [11, 13, 4],
+			"faces": {
+				"north": {"uv": [5, 3, 11, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [12, 3, 16, 16], "texture": "#side"},
+				"west": {"uv": [0, 3, 4, 16], "texture": "#side"},
+				"up": {"uv": [5, 0, 11, 4], "texture": "#top"},
+				"down": {"uv": [5, 12, 11, 16], "texture": "#bottom", "cullface": "down"}
+			}
+		},
+		{
+			"name": "south",
+			"from": [5, 0, 12],
+			"to": [11, 13, 16],
+			"faces": {
+				"east": {"uv": [0, 3, 4, 16], "texture": "#side"},
+				"south": {"uv": [5, 3, 11, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [12, 3, 16, 16], "texture": "#side"},
+				"up": {"uv": [5, 12, 11, 16], "texture": "#top"},
+				"down": {"uv": [5, 0, 11, 4], "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"rotation": [30, 135, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

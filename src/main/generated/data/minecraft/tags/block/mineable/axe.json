@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#aquifer:wooden_walls",
+    "#aquifer:wooden_fence_gates",
+    "#aquifer:wooden_chests",
+    "#aquifer:wooden_barrels",
+    "#aquifer:wooden_ladders",
+    "#aquifer:crafted_beehives"
+  ]
+}

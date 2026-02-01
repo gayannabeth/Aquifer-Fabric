@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:ancient_debris",
+    "minecraft:netherite_block",
+    "minecraft:netherite_ingot",
+    "minecraft:netherite_scrap",
+    "#aquifer:netherite_tools",
+    "#aquifer:netherite_armors",
+    "#c:ingots/netherite",
+    "#c:ores/netherite_scrap",
+    "#c:storage_blocks/netherite"
+  ]
+}
