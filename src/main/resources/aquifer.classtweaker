@@ -14,3 +14,4 @@ transitive-inject-interface net/minecraft/block/CoralWallFanBlock gay/mountainsp
 transitive-inject-interface net/minecraft/block/AbstractCauldronBlock gay/mountainspring/aquifer/block/AquiferCauldronExtensions
 transitive-inject-interface net/minecraft/block/LeveledCauldronBlock gay/mountainspring/aquifer/block/AquiferLeveledCauldronExtensions
 transitive-inject-interface net/minecraft/item/ItemStack gay/mountainspring/aquifer/item/AquiferItemStack
+transitive-inject-interface net/minecraft/item/Item$Settings gay/mountainspring/aquifer/item/AquiferItemSettings

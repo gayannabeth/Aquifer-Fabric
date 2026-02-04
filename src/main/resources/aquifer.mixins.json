@@ -46,6 +46,7 @@
 		"ItemAccessor",
 		"ItemMixin",
 		"ItemEntityMixin",
+		"ItemSettingsMixin",
 		"ItemStackMixin",
 		"KelpBlockMixin",
 		"LeveledCauldronBlockMixin",
