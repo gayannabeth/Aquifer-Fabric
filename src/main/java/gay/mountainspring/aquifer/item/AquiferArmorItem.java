@@ -9,6 +9,9 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
+/**
+ * Extension of the vanilla ArmorItem class that adds default item break and enchantability components
+ */
 public class AquiferArmorItem extends ArmorItem {
 	public AquiferArmorItem(SoundEvent breakSound, RegistryEntry<ArmorMaterial> material, Type type, Settings settings) {
 		super(material, type, addComponents(settings, breakSound, material));

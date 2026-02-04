@@ -19,6 +19,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+//mostly just here so modded tripwire hooks don't spontaneously morph into vanilla tripwire hooks. I stg Mojank never thinks of modding
 public class TripwireUtil {
 	public static void update(World world, BlockPos pos, BlockState state, boolean bl, boolean bl2, int i, @Nullable BlockState blockState) {
 		Optional<Direction> optional = state.getOrEmpty(TripwireHookBlock.FACING);

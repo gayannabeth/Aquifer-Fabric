@@ -20,6 +20,7 @@ public class AquiferComponentTypes {
 	
 	public static void init() {}
 	
+	//Recipe Remainder item component, replaces/overrides the hardcoded recipe remainder in items
 	public static final ComponentType<RegistryEntry<Item>> RECIPE_REMAINDER = register("recipe_remainder", builder -> builder.codec(Registries.ITEM.getEntryCodec()).cache());
 	public static final ComponentType<RegistryEntry<SoundEvent>> EAT_SOUND = register("eat_sound", builder -> builder.codec(SoundEvent.ENTRY_CODEC).packetCodec(SoundEvent.ENTRY_PACKET_CODEC).cache());
 	public static final ComponentType<RegistryEntry<SoundEvent>> DRINK_SOUND = register("drink_sound", builder -> builder.codec(SoundEvent.ENTRY_CODEC).packetCodec(SoundEvent.ENTRY_PACKET_CODEC).cache());

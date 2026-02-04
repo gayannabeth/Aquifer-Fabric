@@ -17,10 +17,19 @@ public class StatusEffectUtil {
 	
 	private static final Map<RegistryEntry<StatusEffect>, TagKey<EntityType<?>>> EFFECT_IMMUNE_TAGS = Maps.newHashMap();
 	
+	/**
+	 * Map a {@link StatusEffect} {@link RegistryEntry} to a {@link EntityType} {@link TagKey} for entities that are immune to the given tag
+	 * @param effect the effect the entities are immune to
+	 * @param tag the tag for entities immune to this effect
+	 */
 	public static void registerEffectImmuneTag(RegistryEntry<StatusEffect> effect, TagKey<EntityType<?>> tag) {
 		EFFECT_IMMUNE_TAGS.putIfAbsent(effect, tag);
 	}
 	
+	/**
+	 * @return An {@link ImmutableMap} Effect Immune {@link EntityType} tags
+	 * @return
+	 */
 	public static Map<RegistryEntry<StatusEffect>, TagKey<EntityType<?>>> effectImmuneTags() {
 		return ImmutableMap.copyOf(EFFECT_IMMUNE_TAGS);
 	}

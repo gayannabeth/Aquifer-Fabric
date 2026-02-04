@@ -10,7 +10,9 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-
+/**
+ * Quick and Dirty record implementation of {@link ToolMaterial}
+ */
 public record AquiferToolMaterial(Identifier name, TagKey<Block> inverseTag, int durability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> ingredientSupplier) implements ToolMaterial {
 	public static AquiferToolMaterial create(Identifier name, TagKey<Block> inverseTag, int durability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> ingredientSupplier) {
 		return new AquiferToolMaterial(name, inverseTag, durability, miningSpeed, attackDamage, enchantability, Suppliers.memoize(ingredientSupplier::get));

@@ -9,7 +9,9 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-
+/**
+ * vanilla short plants are dumb, use this instead, make sure to register a short and tall plant pair with {@link BlockUtil}, otherwise this'll just grow into {@link net.minecraft.block.Blocks.TALL_GRASS}
+ */
 public class AquiferShortPlantBlock extends ShortPlantBlock {
 	public static final MapCodec<ShortPlantBlock> CODEC = createCodec(AquiferShortPlantBlock::new);
 	

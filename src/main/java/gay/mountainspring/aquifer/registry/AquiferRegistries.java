@@ -11,11 +11,13 @@ import net.minecraft.registry.Registry;
 public class AquiferRegistries {
 	private AquiferRegistries() {}
 	
-	public static void init() {
-		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_EXPRESSION, LootNumberExpression.CODEC);
-		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_PREDICATE, LootNumberPredicate.CODEC);
-	}
+	public static void init() {}
 	
 	public static final Registry<CauldronContentsType> CAULDRON_CONTENTS_TYPE = FabricRegistryBuilder.createSimple(AquiferRegistryKeys.CAULDRON_CONTENTS_TYPE).buildAndRegister();
 	public static final Registry<CauldronGroup> CAULDRON_GROUP = FabricRegistryBuilder.createSimple(AquiferRegistryKeys.CAULDRON_GROUP).buildAndRegister();
+	
+	static {
+		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_EXPRESSION, LootNumberExpression.CODEC);
+		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_PREDICATE, LootNumberPredicate.CODEC);
+	}
 }

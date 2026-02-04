@@ -12,15 +12,11 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 import gay.mountainspring.aquifer.item.component.AquiferComponentTypes;
-import gay.mountainspring.aquifer.mixin.ComponentMapBuilderInvoker;
 import gay.mountainspring.aquifer.mixin.ItemAccessor;
 import gay.mountainspring.aquifer.tag.AquiferTags;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.component.ComponentMap;
-import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.ToolComponent;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
@@ -38,7 +34,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Rarity;
 
 public class ItemUtil {
 	private ItemUtil() {}
@@ -82,42 +77,13 @@ public class ItemUtil {
 		addItemTagDamageHandler(tag, damageSource -> damageSource.isOf(damageType));
 	}
 	
-	public static void setItemRarity(Item item, Rarity rarity) {
-		setComponent(item, DataComponentTypes.RARITY, rarity);
-	}
-	
-	public static void setItemMaxCount(Item item, int count) {
-		if (!item.getComponents().contains(DataComponentTypes.MAX_DAMAGE)) {
-			setComponent(item, DataComponentTypes.MAX_STACK_SIZE, count);
-		}
-	}
-	
-	public static void setItemMaxDamage(Item item, int damage) {
-		setComponents(item, ComponentMapBuilderInvoker.newComponentMapBuilder()
-				.add(DataComponentTypes.MAX_DAMAGE, damage)
-				.add(DataComponentTypes.MAX_STACK_SIZE, 1)
-				.add(DataComponentTypes.DAMAGE, 0)
-				.build());
-	}
-	
+	/**
+	 * Sets a recipe remainder item for an existing item
+	 * @param item the item to set the recipe remainder for
+	 * @param recipeRemainder the item to set as the recipe remainder (may be null for no recipe remainder)
+	 */
 	public static void setItemRecipeRemainder(Item item, @Nullable Item recipeRemainder) {
 		((ItemAccessor) item).setRecipeRemainder(recipeRemainder);
-	}
-	
-	public static void setItemFoodComponent(Item item, @Nullable FoodComponent foodComponent) {
-		setComponent(item, DataComponentTypes.FOOD, foodComponent);
-	}
-	
-	public static <T> void setComponent(Item item, ComponentType<T> type, T value) {
-		setComponents(item, ComponentMapBuilderInvoker.newComponentMapBuilder().add(type, value).build());
-	}
-	
-	public static void setComponents(Item item, ComponentMap components) {
-		DefaultItemComponentEvents.MODIFY.register(context -> {
-			context.modify(item, builder -> {
-				builder.addAll(components);
-			});
-		});
 	}
 	
 	static {

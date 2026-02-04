@@ -139,11 +139,17 @@ public class BlockUtil {
 		if (SHORT_TO_TALL_PLANTS.containsKey(shortPlant))
 			throw new IllegalArgumentException(String.format("{} is already a register short plant!", shortPlant));
 		if (SHORT_TO_TALL_PLANTS.containsValue(tallPlant))
-				throw new IllegalArgumentException(String.format("{} is already a register tall plant!", tallPlant));
+			throw new IllegalArgumentException(String.format("{} is already a register tall plant!", tallPlant));
 		
 		SHORT_TO_TALL_PLANTS.put(shortPlant, tallPlant);
 	}
 	
+	/**
+	 * Registries a trio of anvils such that each damages into the next and the final variant damages into nothing
+	 * @param undamaged the undamaged anvil variant
+	 * @param slightlyDamaged the slightly damaged anvil variant
+	 * @param veryDamaged the very damaged anvil variant
+	 */
 	public static void addAnvilTrio(Block undamaged, Block slightlyDamaged, Block veryDamaged) {
 		if (!(undamaged instanceof AnvilBlock && slightlyDamaged instanceof AnvilBlock && veryDamaged instanceof AnvilBlock)) {
 			throw new IllegalArgumentException(String.format("One of %s, %s, and %s is not an anvil!", undamaged, slightlyDamaged, veryDamaged));
@@ -154,6 +160,10 @@ public class BlockUtil {
 		ANVIL_DAMAGE_MAP.put(veryDamaged, state -> null);
 	}
 	
+	/**
+	 * Registers an anvil that should never be able to break
+	 * @param anvil the unbreakable anvil
+	 */
 	public static void addUnbreakableAnvil(Block anvil) {
 		if (!(anvil instanceof AnvilBlock)) {
 			throw new IllegalArgumentException(String.format("%s is not an anvil!", anvil));

@@ -10,6 +10,9 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldAccess;
 
+/**
+ * Interface supporting interface injection on vanilla blocks to make them bucketable. Must also come with a mixin
+ */
 public interface InjectableFluidDrainable extends FluidDrainable {
 	@Override
 	default ItemStack tryDrainFluid(PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {

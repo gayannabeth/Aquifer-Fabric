@@ -19,6 +19,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.Util;
 
+/**
+ * An object that represents a group of cauldrons. All registered {@link CauldronGroup}s must have a {@link Block} register for each registers {@link CauldronContentsType}, otherwise {@link NullPointerException}s may be thrown during gameplay
+ */
 public final class CauldronGroup implements StringIdentifiable {
 	public static final MapCodec<CauldronGroup> CODEC = RecordCodecBuilder.mapCodec(
 			instance -> instance.group(Identifier.CODEC.fieldOf("name").forGetter(CauldronGroup::getName),

@@ -1,5 +1,8 @@
 package gay.mountainspring.aquifer.util;
 
+/**
+ * An enum that contains a pair of booleans
+ */
 public enum BooleanPair {
 	FALSEFALSE(false, false),
 	FALSETRUE(false, true),

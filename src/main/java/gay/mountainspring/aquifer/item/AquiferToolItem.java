@@ -7,6 +7,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
+/**
+ * Extension of the vanilla ToolItem class that adds default item break and enchantability components
+ */
 public class AquiferToolItem extends ToolItem {
 	public AquiferToolItem(SoundEvent breakSound, ToolMaterial material, Settings settings) {
 		super(material, settings.component(AquiferComponentTypes.BREAK_SOUND, Registries.SOUND_EVENT.getEntry(breakSound)).component(AquiferComponentTypes.ENCHANTABILITY, material.getEnchantability()));

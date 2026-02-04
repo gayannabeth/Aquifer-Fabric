@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 public abstract class LivingEntityMixin extends Entity implements Attackable {
 	private LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 	
+	//this fixes a fucking bug too lmao
 	@Inject(at = @At("HEAD"), method = "canHaveStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;)Z", cancellable = true)
 	private void canHaveStatusEffectInjected(StatusEffectInstance effect, CallbackInfoReturnable<Boolean> info)  {
 		if (AquiferConfig.getInstance().getTagHandlingLevel() != TagHandlingLevel.DISABLED) {

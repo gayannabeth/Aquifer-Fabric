@@ -22,6 +22,8 @@ import gay.mountainspring.aquifer.util.BlockUtil;
 import gay.mountainspring.aquifer.util.ItemUtil;
 import gay.mountainspring.aquifer.util.RepairUtil;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class Aquifer implements ModInitializer {
 	public static final String MOD_ID = "aquifer";
@@ -49,5 +51,15 @@ public class Aquifer implements ModInitializer {
 		RepairUtil.init();
 		BlockUtil.init();
 		ItemUtil.init();
+		
+		ServerLifecycleEvents.SERVER_STARTING.register(server -> validateCauldronGroups());
+	}
+	
+	private static void validateCauldronGroups() {
+		AquiferRegistries.CAULDRON_GROUP.forEach(group -> AquiferRegistries.CAULDRON_CONTENTS_TYPE.forEach(contents -> {
+			if (group.get(contents) == null && FabricLoader.getInstance().isDevelopmentEnvironment()) {
+				LOGGER.error(String.format("{} does not have a registered block for {}!", group, contents));
+			}
+		}));
 	}
 }

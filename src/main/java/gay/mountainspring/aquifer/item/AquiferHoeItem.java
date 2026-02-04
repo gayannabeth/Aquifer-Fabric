@@ -7,6 +7,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
+/**
+ * Extension of the vanilla HoeItem class that adds default item break and enchantability components
+ */
 public class AquiferHoeItem extends HoeItem {
 	public AquiferHoeItem(SoundEvent breakSound, ToolMaterial toolMaterial, Settings settings) {
 		super(toolMaterial, settings.component(AquiferComponentTypes.BREAK_SOUND, Registries.SOUND_EVENT.getEntry(breakSound)).component(AquiferComponentTypes.ENCHANTABILITY, toolMaterial.getEnchantability()));

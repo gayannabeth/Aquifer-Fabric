@@ -10,6 +10,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.Util;
 
+/**
+ * An object the represents the contents of cauldrons. For each registered {@link CauldronGroup}, all registered {@link CauldronContentsType}s must have an associated {@link Block} to avoid {@link NullPointerException}s being thrown during gameplay
+ */
 public final record CauldronContentsType(Identifier name) implements StringIdentifiable {
 	public static final MapCodec<CauldronContentsType> CODEC = RecordCodecBuilder.mapCodec(
 			instance -> instance.group(Identifier.CODEC.fieldOf("name").forGetter(CauldronContentsType::name))

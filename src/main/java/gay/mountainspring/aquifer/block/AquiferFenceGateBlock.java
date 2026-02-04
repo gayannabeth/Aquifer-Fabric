@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
 
-/*
+/**
  * exists because vanilla fence gates do not obey BlockSetType rules
  */
 public class AquiferFenceGateBlock extends FenceGateBlock {
