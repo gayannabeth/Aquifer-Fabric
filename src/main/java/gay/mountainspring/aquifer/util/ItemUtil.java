@@ -30,6 +30,7 @@ import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.TridentItem;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.ItemTags;
@@ -93,8 +94,8 @@ public class ItemUtil {
 		
 		DefaultItemComponentEvents.MODIFY.register(context -> {
 			context.modify(item -> item.getDefaultStack().getComponents().contains(DataComponentTypes.FOOD), (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.DRINK_SOUND, () -> AquiferComponentTypes.DEFAULT_DRINK_SOUND);
-				builder.getOrCreate(AquiferComponentTypes.EAT_SOUND, () -> AquiferComponentTypes.DEFAULT_EAT_SOUND);
+				builder.getOrCreate(AquiferComponentTypes.DRINK_SOUND, () -> Registries.SOUND_EVENT.getEntry(item.getDrinkSound()));
+				builder.getOrCreate(AquiferComponentTypes.EAT_SOUND, () -> Registries.SOUND_EVENT.getEntry(item.getEatSound()));
 			});
 			context.modify(item -> item instanceof ShearsItem, (builder, item) -> {
 				ToolComponent component = builder.getOrDefault(DataComponentTypes.TOOL, ShearsItem.createToolComponent());
@@ -105,17 +106,21 @@ public class ItemUtil {
 				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_MEDIUM, 5.0f));
 				rules.add(ToolComponent.Rule.of(AquiferTags.Blocks.SHEARS_MINEABLE_SLOW, 2.0f));
 				builder.add(DataComponentTypes.TOOL, new ToolComponent(ImmutableList.copyOf(rules), f, i));
-				builder.add(AquiferComponentTypes.BREAK_SOUND, AquiferComponentTypes.DEFAULT_BREAK_SOUND);
+				builder.add(AquiferComponentTypes.BREAK_SOUND, Registries.SOUND_EVENT.getEntry(item.getBreakSound()));
 			});
 			context.modify(item -> item instanceof ArmorItem, (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> AquiferComponentTypes.DEFAULT_BREAK_SOUND);
+				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> Registries.SOUND_EVENT.getEntry(item.getBreakSound()));
 				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> ((ArmorItem) item).getMaterial().value().enchantability());
 			});
 			context.modify(item -> item instanceof ToolItem, (builder, item) -> {
-				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> AquiferComponentTypes.DEFAULT_BREAK_SOUND);
+				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> Registries.SOUND_EVENT.getEntry(item.getBreakSound()));
 				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> ((ToolItem) item).getMaterial().getEnchantability());
 			});
-			context.modify(item -> item instanceof BookItem || item instanceof FishingRodItem || item instanceof MaceItem || item instanceof RangedWeaponItem || item instanceof TridentItem, (builder, item) -> {
+			context.modify(item -> item instanceof FishingRodItem || item instanceof MaceItem || item instanceof RangedWeaponItem || item instanceof TridentItem, (builder, item) -> {
+				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> item.getEnchantability());
+				builder.getOrCreate(AquiferComponentTypes.BREAK_SOUND, () -> Registries.SOUND_EVENT.getEntry(item.getBreakSound()));
+			});
+			context.modify(item -> item instanceof BookItem, (builder, item) -> {
 				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> item.getEnchantability());
 			});
 		});
