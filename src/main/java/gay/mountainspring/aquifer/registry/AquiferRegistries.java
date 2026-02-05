@@ -17,7 +17,7 @@ public class AquiferRegistries {
 	public static final Registry<CauldronGroup> CAULDRON_GROUP = FabricRegistryBuilder.createSimple(AquiferRegistryKeys.CAULDRON_GROUP).buildAndRegister();
 	
 	static {
-		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_EXPRESSION, LootNumberExpression.CODEC);
-		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_PREDICATE, LootNumberPredicate.CODEC);
+		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_EXPRESSION, LootNumberExpression.BASE_CODEC.codec());
+		DynamicRegistries.registerSynced(AquiferRegistryKeys.LOOT_NUMBER_PREDICATE, LootNumberPredicate.BASE_CODEC.codec());
 	}
 }

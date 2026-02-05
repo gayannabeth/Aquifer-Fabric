@@ -10,8 +10,6 @@ import java.util.stream.Collectors;
 import com.ezylang.evalex.EvaluationException;
 import com.ezylang.evalex.Expression;
 import com.ezylang.evalex.config.ExpressionConfiguration;
-import com.ezylang.evalex.data.EvaluationValue;
-import com.ezylang.evalex.data.EvaluationValue.DataType;
 import com.ezylang.evalex.parser.ParseException;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
@@ -19,7 +17,16 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import gay.mountainspring.aquifer.registry.AquiferRegistryKeys;
-import gay.mountainspring.aquifer.util.expression.ExpressionUtil;
+import gay.mountainspring.aquifer.util.expression.ACscFunction;
+import gay.mountainspring.aquifer.util.expression.ACscHFunction;
+import gay.mountainspring.aquifer.util.expression.ACscRFunction;
+import gay.mountainspring.aquifer.util.expression.ASecFunction;
+import gay.mountainspring.aquifer.util.expression.ASecHFunction;
+import gay.mountainspring.aquifer.util.expression.ASecRFunction;
+import gay.mountainspring.aquifer.util.expression.CbrtFunction;
+import gay.mountainspring.aquifer.util.expression.InfixXOrOperator;
+import gay.mountainspring.aquifer.util.expression.InvSqrtFunction;
+import gay.mountainspring.aquifer.util.expression.PostfixFactorialOperator;
 import gay.mountainspring.aquifer.util.function.ToFloatBiFunction;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.provider.number.LootNumberProvider;
@@ -38,7 +45,7 @@ public record LootNumberExpression(Expression expression, int variableCount) imp
 	public static final Codec<RegistryEntry<LootNumberExpression>> ENTRY_CODEC = RegistryElementCodec.of(AquiferRegistryKeys.LOOT_NUMBER_EXPRESSION, CODEC);
 	
 	public LootNumberExpression(Expression expression, int variableCount) {
-		this.expression = convertExpression(validate(expression, variableCount));
+		this.expression = convertExpression(expression);
 		this.variableCount = variableCount;
 	}
 	
@@ -101,28 +108,6 @@ public record LootNumberExpression(Expression expression, int variableCount) imp
 		return map;
 	}
 	
-	private static Expression validate(Expression expression, int variableCount) {
-		try {
-			var variables = expression.getUndefinedVariables();
-			if (variables.size() != variableCount) throw new IllegalArgumentException(String.format("Variable count mismatch! Found: {}, expected: {}", variables.size(), variableCount));
-			
-			Expression copy = expression.copy();
-			
-			for (String variable : variables) {
-				copy = copy.with(variable, 1);
-			}
-			
-			EvaluationValue value = copy.evaluate();
-			
-			if (!value.isNumberValue()) {
-				throw new IllegalArgumentException(String.format("Expected result of type {}, found {} instead", DataType.NUMBER, value.getDataType()));
-			}
-		} catch (ParseException | EvaluationException e) {
-			throw new IllegalArgumentException(e);
-		}
-		return expression;
-	}
-	
 	public static Expression createExpression(String exStr) {
 		return new Expression(exStr, createExpressionConfig());
 	}
@@ -133,7 +118,15 @@ public record LootNumberExpression(Expression expression, int variableCount) imp
 	
 	private static ExpressionConfiguration createExpressionConfig() {
 		return ExpressionConfiguration.defaultConfiguration()
-				.withAdditionalOperators(ExpressionUtil.getOperators())
-				.withAdditionalFunctions(ExpressionUtil.getFunctions());
+				.withAdditionalOperators(Map.entry("!", new PostfixFactorialOperator()),
+						Map.entry("^^", new InfixXOrOperator()))
+				.withAdditionalFunctions(Map.entry("ASEC", new ASecFunction()),
+						Map.entry("ASECH", new ASecHFunction()),
+						Map.entry("ASECR", new ASecRFunction()),
+						Map.entry("ACSC", new ACscFunction()),
+						Map.entry("ACSCH", new ACscHFunction()),
+						Map.entry("ACSCR", new ACscRFunction()),
+						Map.entry("CBRT", new CbrtFunction()),
+						Map.entry("INV_SQRT", new InvSqrtFunction()));
 	}
 }
