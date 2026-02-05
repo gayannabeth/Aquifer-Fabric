@@ -14,7 +14,7 @@
 		"discord": "https://discord.gg/8KZvZHq",
 		"sources": "https://github.com/gayannabeth/Aquifer-Fabric"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/aquifer/icon.png",
 	"environment": "*",
 	"accessWidener" : "aquifer.classtweaker",
