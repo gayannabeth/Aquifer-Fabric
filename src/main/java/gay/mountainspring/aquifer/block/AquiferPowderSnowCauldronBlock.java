@@ -21,7 +21,6 @@ public class AquiferPowderSnowCauldronBlock extends AquiferThreeLeveledCauldronB
 	
 	public AquiferPowderSnowCauldronBlock(CauldronGroup group, Settings settings) {
 		super(Biome.Precipitation.SNOW, group, settings, CauldronBehavior.POWDER_SNOW_CAULDRON_BEHAVIOR);
-		group.setPowderSnow(this);
 	}
 	
 	@Override

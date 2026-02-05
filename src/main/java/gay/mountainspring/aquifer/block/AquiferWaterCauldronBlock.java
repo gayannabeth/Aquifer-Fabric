@@ -21,7 +21,6 @@ public class AquiferWaterCauldronBlock extends AquiferThreeLeveledCauldronBlock 
 	
 	public AquiferWaterCauldronBlock(CauldronGroup group, Settings settings) {
 		super(Biome.Precipitation.RAIN, group, settings, CauldronBehavior.WATER_CAULDRON_BEHAVIOR);
-		group.setWater(this);
 	}
 	
 	@Override

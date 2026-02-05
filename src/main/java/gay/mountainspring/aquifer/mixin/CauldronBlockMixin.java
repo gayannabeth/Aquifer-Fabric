@@ -6,9 +6,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import gay.mountainspring.aquifer.block.AbstractAquiferCauldronBlock;
-import gay.mountainspring.aquifer.block.cauldron.CauldronGroup;
 import gay.mountainspring.aquifer.util.BlockUtil;
+import net.minecraft.block.AbstractCauldronBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CauldronBlock;
 import net.minecraft.block.cauldron.CauldronBehavior.CauldronBehaviorMap;
@@ -19,8 +18,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 @Mixin(CauldronBlock.class)
-public abstract class CauldronBlockMixin extends AbstractAquiferCauldronBlock {
-	private CauldronBlockMixin(CauldronGroup group, Settings settings, CauldronBehaviorMap behaviorMap) {super(group, settings, behaviorMap);}
+public abstract class CauldronBlockMixin extends AbstractCauldronBlock {
+	private CauldronBlockMixin(Settings settings, CauldronBehaviorMap behaviorMap) {super(settings, behaviorMap);}
 	
 	@Inject(at = @At("HEAD"), method = "canBeFilledByDripstone(Lnet/minecraft/fluid/Fluid;)Z", cancellable = true)
 	private void canBeFilledByDripstoneInjected(Fluid fluid, CallbackInfoReturnable<Boolean> info) {

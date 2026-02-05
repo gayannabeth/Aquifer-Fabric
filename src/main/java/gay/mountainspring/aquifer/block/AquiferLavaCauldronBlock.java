@@ -20,7 +20,6 @@ public class AquiferLavaCauldronBlock extends AbstractAquiferCauldronBlock {
 	
 	public AquiferLavaCauldronBlock(CauldronGroup group, Settings settings) {
 		super(group, settings, CauldronBehavior.LAVA_CAULDRON_BEHAVIOR);
-		group.setLava(this);
 	}
 	
 	@Override

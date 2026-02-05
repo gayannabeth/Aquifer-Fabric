@@ -24,7 +24,6 @@ public class AquiferCauldronBlock extends AbstractAquiferCauldronBlock {
 	
 	public AquiferCauldronBlock(CauldronGroup group, Settings settings) {
 		super(group, settings, CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR);
-		group.setEmpty(this);
 	}
 
 	@Override
