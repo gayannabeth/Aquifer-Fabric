@@ -3,7 +3,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"particle": "@side"
+		"particle": "#side"
 	},
 	"parent": "block/block",
 	"elements": [

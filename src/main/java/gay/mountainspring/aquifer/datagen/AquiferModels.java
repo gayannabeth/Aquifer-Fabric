@@ -89,7 +89,7 @@ public class AquiferModels {
 	
 	public static final Model TEMPLATE_CARPET = block("template_carpet", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
 	
-	public static final Model LEAVES_CARPET = block("leaves_carpet", TextureKey.TEXTURE);
+	public static final Model LEAVES_CARPET = block("leaves_carpet", TextureKey.ALL);
 	
 	public static final Model LADDER = block("ladder", TextureKey.TEXTURE);
 	
