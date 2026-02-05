@@ -19,8 +19,8 @@ public class AquiferModels {
 	public static final Model ORIENTABLE_SLAB_INSIDE = block("orientable_slab_inside", "_oriented", TextureKey.BOTTOM, TextureKey.INSIDE, TextureKey.SIDE, TextureKey.TOP);
 	public static final Model ORIENTABLE_SLAB_TOP_INSIDE = block("orientable_slab_top_inside", "_oriented_top", TextureKey.BOTTOM, TextureKey.INSIDE, TextureKey.SIDE, TextureKey.TOP);
 	
-	public static final Model LEAVES_SLAB = block("leaves_slab", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
-	public static final Model LEAVES_SLAB_TOP = block("leaves_slab_top", "_top", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
+	public static final Model LEAVES_SLAB = block("leaves_slab", TextureKey.ALL);
+	public static final Model LEAVES_SLAB_TOP = block("leaves_slab_top", "_top", TextureKey.ALL);
 	
 	public static final Model STAIRS_INSIDE = block("stairs_inside", TextureKey.BOTTOM, TextureKey.INSIDE, TextureKey.SIDE, TextureKey.TOP);
 	public static final Model STAIRS_FLIPPED = block("stairs_flipped", "_flipped", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
@@ -47,9 +47,9 @@ public class AquiferModels {
 	public static final Model ORIENTED_OUTER_STAIRS_INSIDE = block("oriented_outer_stairs_inside", "_oriented", TextureKey.BOTTOM, TextureKey.INSIDE, TextureKey.SIDE, TextureKey.TOP);
 	public static final Model ORIENTED_OUTER_STAIRS_INSIDE_MIRRORED = block("oriented_outer_stairs_inside_mirrored", "_oriented_mirrored", TextureKey.BOTTOM, TextureKey.INSIDE, TextureKey.SIDE, TextureKey.TOP);
 	
-	public static final Model LEAVES_STAIRS = block("leaves_stairs", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
-	public static final Model LEAVES_INNER_STAIRS = block("leaves_inner_stairs", "_inner", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
-	public static final Model LEAVES_OUTER_STAIRS = block("leaves_outer_stairs", "_outer", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
+	public static final Model LEAVES_STAIRS = block("leaves_stairs", TextureKey.ALL);
+	public static final Model LEAVES_INNER_STAIRS = block("leaves_inner_stairs", "_inner", TextureKey.ALL);
+	public static final Model LEAVES_OUTER_STAIRS = block("leaves_outer_stairs", "_outer", TextureKey.ALL);
 	
 	public static final Model TRANS_STAIRS = block("trans_stairs", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
 	public static final Model TRANS_INNER_STAIRS = block("trans_inner_stairs", "_inner", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
@@ -70,10 +70,10 @@ public class AquiferModels {
 	public static final Model TEMPLATE_TERRAIN_WALL_SIDE_TALL = block("template_terrain_wall_side_tall", "_side_tall", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
 	public static final Model TERRAIN_WALL_INVENTORY = block("terrain_wall_inventory", "_inventory", TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.TOP);
 	
-	public static final Model TEMPLATE_LEAVES_WALL_POST = block("template_leaves_wall_post", "_post", TextureKey.WALL);
-	public static final Model TEMPLATE_LEAVES_WALL_SIDE = block("template_leaves_wall_side", "_side", TextureKey.WALL);
-	public static final Model TEMPLATE_LEAVES_WALL_SIDE_TALL = block("template_leaves_wall_side_tall", "_side_tall", TextureKey.WALL);
-	public static final Model LEAVES_WALL_INVENTORY = block("leaves_wall_inventory", "_inventory", TextureKey.WALL);
+	public static final Model TEMPLATE_LEAVES_WALL_POST = block("template_leaves_wall_post", "_post", TextureKey.ALL);
+	public static final Model TEMPLATE_LEAVES_WALL_SIDE = block("template_leaves_wall_side", "_side", TextureKey.ALL);
+	public static final Model TEMPLATE_LEAVES_WALL_SIDE_TALL = block("template_leaves_wall_side_tall", "_side_tall", TextureKey.ALL);
+	public static final Model LEAVES_WALL_INVENTORY = block("leaves_wall_inventory", "_inventory", TextureKey.ALL);
 	
 	public static final Model TEMPLATE_TRANS_WALL_POST = block("template_trans_wall_post", "_post", TextureKey.SIDE, TextureKey.TOP, TextureKey.BOTTOM);
 	public static final Model TEMPLATE_TRANS_WALL_NOPOST = block("template_trans_wall_nopost", "_nopost", TextureKey.SIDE, TextureKey.TOP, TextureKey.BOTTOM);
