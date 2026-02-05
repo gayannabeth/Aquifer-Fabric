@@ -17,6 +17,7 @@ public abstract class AbstractAquiferCauldronBlock extends AbstractCauldronBlock
 	public AbstractAquiferCauldronBlock(CauldronGroup group, Settings settings, CauldronBehaviorMap behaviorMap) {
 		super(settings, behaviorMap);
 		this.group = group;
+		group.set(this.aquifer$getContentsType(), this);
 	}
 	
 	public CauldronGroup getGroup() {

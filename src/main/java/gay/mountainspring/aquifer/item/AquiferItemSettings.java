@@ -6,19 +6,19 @@ import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvent;
 
 public interface AquiferItemSettings {
-	default Item.Settings breakSound(SoundEvent sound) {
+	default Item.Settings aquifer$breakSound(SoundEvent sound) {
 		return ((Item.Settings) this).component(AquiferComponentTypes.BREAK_SOUND, Registries.SOUND_EVENT.getEntry(sound));
 	}
 	
-	default Item.Settings eatSound(SoundEvent sound) {
+	default Item.Settings aquifer$eatSound(SoundEvent sound) {
 		return ((Item.Settings) this).component(AquiferComponentTypes.EAT_SOUND, Registries.SOUND_EVENT.getEntry(sound));
 	}
 	
-	default Item.Settings drinkSound(SoundEvent sound) {
+	default Item.Settings aquifer$drinkSound(SoundEvent sound) {
 		return ((Item.Settings) this).component(AquiferComponentTypes.DRINK_SOUND, Registries.SOUND_EVENT.getEntry(sound));
 	}
 	
-	default Item.Settings enchantability(int enchantability) {
+	default Item.Settings aquifer$enchantability(int enchantability) {
 		return ((Item.Settings) this).component(AquiferComponentTypes.ENCHANTABILITY, enchantability);
 	}
 }

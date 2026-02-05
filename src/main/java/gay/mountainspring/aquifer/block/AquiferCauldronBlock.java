@@ -4,13 +4,13 @@ import com.mojang.serialization.MapCodec;
 
 import gay.mountainspring.aquifer.block.cauldron.CauldronContentsType;
 import gay.mountainspring.aquifer.block.cauldron.CauldronGroup;
+import gay.mountainspring.aquifer.util.BlockUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.Fluids;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.event.GameEvent;
 
@@ -51,21 +51,16 @@ public class AquiferCauldronBlock extends AbstractAquiferCauldronBlock {
 	
 	@Override
 	protected boolean canBeFilledByDripstone(Fluid fluid) {
-		return true;
+		return BlockUtil.isDripstoneFluid(fluid);
 	}
 	
 	@Override
 	protected void fillFromDripstone(BlockState state, World world, BlockPos pos, Fluid fluid) {
-		if (fluid == Fluids.WATER) {
-			BlockState blockState = this.group.getWater().getDefaultState();
+		if (BlockUtil.isDripstoneFluid(fluid)) {
+			BlockState blockState  = BlockUtil.getStateForDrippingFluidIntoEmptyCauldron(fluid, this.group);
 			world.setBlockState(pos, blockState);
+			world.playSoundAtBlockCenter(pos, BlockUtil.getSoundForDrippingFluid(fluid), SoundCategory.BLOCKS, 1.0f, 1.0f, false);
 			world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(blockState));
-			world.syncWorldEvent(WorldEvents.POINTED_DRIPSTONE_DRIPS_WATER_INTO_CAULDRON, pos, 0);
-		} else if (fluid == Fluids.LAVA) {
-			BlockState blockState = this.group.getLava().getDefaultState();
-			world.setBlockState(pos, blockState);
-			world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(blockState));
-			world.syncWorldEvent(WorldEvents.POINTED_DRIPSTONE_DRIPS_LAVA_INTO_CAULDRON, pos, 0);
 		}
 	}
 	

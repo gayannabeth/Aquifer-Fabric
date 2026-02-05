@@ -20,6 +20,7 @@
 		"CactusBlockMixin",
 		"CampfireBlockMixin",
 		"CartographyTableScreenHandlerMixin",
+		"CauldronBlockMixin",
 		"ChorusFlowerBlockAccessor",
 		"ChorusFlowerBlockMixin",
 		"ChorusPlantBlockMixin",

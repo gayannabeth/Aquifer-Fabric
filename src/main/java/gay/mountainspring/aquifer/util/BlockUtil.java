@@ -13,6 +13,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
+import gay.mountainspring.aquifer.block.cauldron.CauldronContentsType;
+import gay.mountainspring.aquifer.block.cauldron.CauldronGroup;
 import gay.mountainspring.aquifer.mixin.AbstractBlockAccessor;
 import gay.mountainspring.aquifer.mixin.PointOfInterestTypesAccessor;
 import gay.mountainspring.aquifer.tag.AquiferTags;
@@ -24,9 +26,14 @@ import net.minecraft.block.PillarBlock;
 import net.minecraft.block.ShortPlantBlock;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.WoodType;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.poi.PointOfInterestType;
 
 public class BlockUtil {
@@ -43,6 +50,38 @@ public class BlockUtil {
 	private static final BiMap<ShortPlantBlock, TallPlantBlock> SHORT_TO_TALL_PLANTS = HashBiMap.create();
 	
 	private static final Map<Block, Function<BlockState, BlockState>> ANVIL_DAMAGE_MAP = Maps.newHashMap();
+	
+	private static final ToPairHashMap<Fluid, CauldronContentsType, SoundEvent> DRIPSTONE_DRIPPING_INTO_CAULDRON_MAP = new ToPairHashMap<>();
+	
+	private static final Map<CauldronContentsType, Biome.Precipitation> PRECIPITATION_FOR_CAULDRON_CONTENTS = Maps.newHashMap();
+	
+	public static void addPrecipitationForCauldronContents(CauldronContentsType contents, Biome.Precipitation precipitation) {
+		PRECIPITATION_FOR_CAULDRON_CONTENTS.putIfAbsent(contents, precipitation);
+	}
+	
+	public static boolean isPrecipitationValidForContents(CauldronContentsType contents, Biome.Precipitation precipitation) {
+		return PRECIPITATION_FOR_CAULDRON_CONTENTS.containsKey(contents) && PRECIPITATION_FOR_CAULDRON_CONTENTS.get(contents) == precipitation;
+	}
+	
+	public static void addDripstoneFluid(Fluid fluid, CauldronContentsType contents, SoundEvent dripSound) {
+		DRIPSTONE_DRIPPING_INTO_CAULDRON_MAP.putIfAbsent(fluid, contents, dripSound);
+	}
+	
+	public static boolean isDripstoneFluid(Fluid fluid) {
+		return DRIPSTONE_DRIPPING_INTO_CAULDRON_MAP.containsKey(fluid);
+	}
+	
+	public static BlockState getStateForDrippingFluidIntoEmptyCauldron(Fluid fluid, CauldronGroup group) {
+		return group.get(DRIPSTONE_DRIPPING_INTO_CAULDRON_MAP.getLeft(fluid)).getDefaultState();
+	}
+	
+	public static SoundEvent getSoundForDrippingFluid(Fluid fluid) {
+		return DRIPSTONE_DRIPPING_INTO_CAULDRON_MAP.getRight(fluid);
+	}
+	
+	public static boolean shouldDripInto(Fluid fluid, CauldronContentsType contents) {
+		return isDripstoneFluid(fluid) && (contents == CauldronContentsType.EMPTY || contents == DRIPSTONE_DRIPPING_INTO_CAULDRON_MAP.getLeft(fluid));
+	}
 	
 	/**
 	 * 
@@ -254,5 +293,11 @@ public class BlockUtil {
 		reg.add(AquiferTags.Blocks.LECTERNS, 30, 20);
 		reg.add(AquiferTags.Blocks.COMPOSTERS, 5, 20);
 		reg.add(AquiferTags.Blocks.CRAFTED_BEEHIVES, 5, 20);
+		
+		addDripstoneFluid(Fluids.WATER, CauldronContentsType.WATER, SoundEvents.BLOCK_POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON);
+		addDripstoneFluid(Fluids.LAVA, CauldronContentsType.LAVA, SoundEvents.BLOCK_POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON);
+		
+		addPrecipitationForCauldronContents(CauldronContentsType.WATER, Biome.Precipitation.RAIN);
+		addPrecipitationForCauldronContents(CauldronContentsType.POWDER_SNOW, Biome.Precipitation.SNOW);
 	}
 }
