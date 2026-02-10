@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 
+import gay.mountainspring.aquifer.Aquifer;
 import gay.mountainspring.aquifer.block.entity.AquiferBlockEntityTypes;
 import gay.mountainspring.aquifer.block.entity.TypedChestBlockEntity;
 import gay.mountainspring.aquifer.block.entity.TypedTrappedChestBlockEntity;
@@ -30,6 +31,8 @@ public class AquiferClient implements ClientModInitializer {
 		TypedChestBlockEntityRenderer.refreshSpriteMaps();
 		BlockEntityRendererFactories.register(AquiferBlockEntityTypes.TYPED_CHEST, TypedChestBlockEntityRenderer::new);
 		BlockEntityRendererFactories.register(AquiferBlockEntityTypes.TYPED_TRAPPED_CHEST, TypedChestBlockEntityRenderer::new);
+		
+		ClientLifecycleEvents.CLIENT_STARTED.register(client -> Aquifer.validateCauldronGroups());
 		
 		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> AquiferConfig.save());
 	}

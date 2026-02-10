@@ -55,7 +55,7 @@ public class Aquifer implements ModInitializer {
 		ServerLifecycleEvents.SERVER_STARTING.register(server -> validateCauldronGroups());
 	}
 	
-	private static void validateCauldronGroups() {
+	public static void validateCauldronGroups() {
 		AquiferRegistries.CAULDRON_GROUP.forEach(group -> AquiferRegistries.CAULDRON_CONTENTS_TYPE.forEach(contents -> {
 			if (group.get(contents) == null && FabricLoader.getInstance().isDevelopmentEnvironment()) {
 				LOGGER.error(String.format("{} does not have a registered block for {}!", group, contents));
