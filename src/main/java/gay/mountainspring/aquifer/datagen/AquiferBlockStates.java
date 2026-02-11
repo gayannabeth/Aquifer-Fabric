@@ -53,6 +53,33 @@ public class AquiferBlockStates {
 		gen.registerParentedItemModel(block, model);
 	}
 	
+	public static void registerParentedAxisRotated(BlockStateModelGenerator gen, Block modelSource, Block child) {
+		Identifier model = ModelIds.getBlockModelId(modelSource);
+		
+		gen.blockStateCollector.accept(BlockStateModelGenerator.createAxisRotatedBlockState(child, model));
+		gen.registerParentedItemModel(child, model);
+	}
+	
+	public static void registerParentedAxisRotatedWithHorizontal(BlockStateModelGenerator gen, Block modelSource, Block child) {
+		Identifier model = ModelIds.getBlockModelId(modelSource);
+		Identifier modelHorizontal = ModelIds.getBlockSubModelId(modelSource, "_horizontal");
+		
+		gen.blockStateCollector.accept(BlockStateModelGenerator.createAxisRotatedBlockState(child, model, modelHorizontal));
+		gen.registerParentedItemModel(child, model);
+	}
+	
+	public static void registerParentedAxisRotatedWithAllAxisModels(BlockStateModelGenerator gen, Block modelSource, Block child) {
+		Identifier modelX = ModelIds.getBlockSubModelId(modelSource, "_x");
+		Identifier modelY = ModelIds.getBlockSubModelId(modelSource, "_y");
+		Identifier modelZ = ModelIds.getBlockSubModelId(modelSource, "_z");
+		
+		gen.blockStateCollector.accept(VariantsBlockStateSupplier.create(child).coordinate(BlockStateVariantMap.create(Properties.AXIS)
+				.register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, modelX))
+				.register(Direction.Axis.Y, BlockStateVariant.create().put(VariantSettings.MODEL, modelY))
+				.register(Direction.Axis.Z, BlockStateVariant.create().put(VariantSettings.MODEL, modelZ))));
+		gen.registerParentedItemModel(child, modelY);
+	}
+	
 	public static void registerSlab(BlockStateModelGenerator gen, Block slab, Block textureSource) {
 		registerSlab(gen, slab, TextureMap.all(textureSource), ModelIds.getBlockModelId(textureSource));
 	}
