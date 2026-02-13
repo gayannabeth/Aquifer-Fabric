@@ -144,13 +144,13 @@ public abstract class AquiferBlockLootTableProvider extends FabricBlockLootTable
 	
 	public LootTable.Builder slabDrops(Block withSilkTouch, ItemConvertible withoutSilkTouch) {
 		return LootTable.builder()
-				.pool(LootPool.builder()
+				.pool(this.applyExplosionDecay(withSilkTouch, LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1.0f))
 						.with(ItemEntry.builder(withSilkTouch)
 								.conditionally(this.createSilkTouchCondition())
 								.alternatively(ItemEntry.builder(withoutSilkTouch)))
 						.apply(LootUtil.setCountLootFunctionBuilder(2.0f)
-								.conditionally(this.isDoubleSlab(withSilkTouch))));
+								.conditionally(this.isDoubleSlab(withSilkTouch)))));
 	}
 	
 	public LootTable.Builder slabDrops(Block withSilkTouch, ItemConvertible withoutSilkTouch, LootNumberProvider doubleDropCount, LootNumberProvider halfDropCount) {
