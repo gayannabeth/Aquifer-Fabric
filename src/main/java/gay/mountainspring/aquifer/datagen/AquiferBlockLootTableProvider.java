@@ -289,4 +289,16 @@ public abstract class AquiferBlockLootTableProvider extends FabricBlockLootTable
 								.alternatively(this.applyExplosionDecay(bookshelf, ItemEntry.builder(bookshelf)
 										.apply(LootUtil.setCountLootFunctionBuilder(3.0f))))));
 	}
+	
+	public LootTable.Builder cropDrops(Block crop, ItemConvertible drop, int min, int max, LootCondition.Builder maxDropsCondition) {
+		var impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+		return LootTable.builder()
+				.pool(this.applyExplosionDecay(drop, LootPool.builder()
+						.rolls(ConstantLootNumberProvider.create(1.0f))
+						.with(ItemEntry.builder(drop)
+								.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(min, max))
+										.conditionally(maxDropsCondition))
+								.apply(ApplyBonusLootFunction.uniformBonusCount(impl.getOrThrow(Enchantments.FORTUNE))
+										.conditionally(maxDropsCondition)))));
+	}
 }
