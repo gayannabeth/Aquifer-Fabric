@@ -9,7 +9,6 @@ import gay.mountainspring.aquifer.block.entity.AquiferBlockEntityTypes;
 import gay.mountainspring.aquifer.block.entity.TypedChestBlockEntity;
 import gay.mountainspring.aquifer.block.entity.TypedTrappedChestBlockEntity;
 import gay.mountainspring.aquifer.client.render.block.entity.TypedChestBlockEntityRenderer;
-import gay.mountainspring.aquifer.config.AquiferConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
@@ -33,8 +32,6 @@ public class AquiferClient implements ClientModInitializer {
 		BlockEntityRendererFactories.register(AquiferBlockEntityTypes.TYPED_TRAPPED_CHEST, TypedChestBlockEntityRenderer::new);
 		
 		ClientLifecycleEvents.CLIENT_STARTED.register(client -> Aquifer.validateCauldronGroups());
-		
-		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> AquiferConfig.save());
 	}
 	
 	public static void registerTypedChestItemRenderer(ItemConvertible chestItem) {

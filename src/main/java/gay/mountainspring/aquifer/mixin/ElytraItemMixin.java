@@ -5,9 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import gay.mountainspring.aquifer.config.AquiferConfig;
 import gay.mountainspring.aquifer.util.RepairUtil;
-import gay.mountainspring.aquifer.util.TagHandlingLevel;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 
@@ -15,11 +13,7 @@ import net.minecraft.item.ItemStack;
 public abstract class ElytraItemMixin {
 	@Inject(at = @At("HEAD"), method = "canRepair(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Z", cancellable = true)
 	private void canRepairInjected(ItemStack stack, ItemStack ingredient, CallbackInfoReturnable<Boolean> info) {
-		if (AquiferConfig.getInstance().getTagHandlingLevel() != TagHandlingLevel.DISABLED) {
-			if (RepairUtil.ELYTRA_REPAIR_INGREDIENT.test(ingredient))
-				info.setReturnValue(true);
-			else if (AquiferConfig.getInstance().getTagHandlingLevel() == TagHandlingLevel.STRICT)
-				info.setReturnValue(false);
-		}
+		if (RepairUtil.ELYTRA_REPAIR_INGREDIENT.test(ingredient))
+			info.setReturnValue(true);
 	}
 }

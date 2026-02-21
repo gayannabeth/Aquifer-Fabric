@@ -9,10 +9,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import gay.mountainspring.aquifer.config.AquiferConfig;
 import gay.mountainspring.aquifer.tag.AquiferTags;
 import gay.mountainspring.aquifer.util.ItemUtil;
-import gay.mountainspring.aquifer.util.TagHandlingLevel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -24,7 +22,7 @@ import net.minecraft.registry.tag.TagKey;
 public abstract class EntityMixin {
 	@Inject(at = @At("HEAD"), method = "isInvulnerableTo(Lnet/minecraft/entity/damage/DamageSource;)Z", cancellable = true)
 	private void isInvulnerableToInjected(DamageSource damageSource, CallbackInfoReturnable<Boolean> info) {
-		if (AquiferConfig.getInstance().getTagHandlingLevel() != TagHandlingLevel.DISABLED && ((Object) this) instanceof ItemEntity itemEntity) {
+		if (((Object) this) instanceof ItemEntity itemEntity) {
 			ItemStack stack = itemEntity.getStack();
 			
 			Map<TagKey<Item>, Predicate<DamageSource>> map = ItemUtil.itemTagDamageHandlers();
@@ -40,7 +38,7 @@ public abstract class EntityMixin {
 	
 	@Inject(at = @At("HEAD"), method = "tickInVoid()V", cancellable = true)
 	private void tickInVoidInjected(CallbackInfo info) {
-		if (AquiferConfig.getInstance().getTagHandlingLevel() != TagHandlingLevel.DISABLED && ((Object) this) instanceof ItemEntity itemEntity) {
+		if (((Object) this) instanceof ItemEntity itemEntity) {
 			if (itemEntity.getStack().isIn(AquiferTags.Items.VOID_PROOF)) {
 				int top = itemEntity.getWorld().getHeight();
 				itemEntity.requestTeleport(itemEntity.getX(), top, itemEntity.getZ());

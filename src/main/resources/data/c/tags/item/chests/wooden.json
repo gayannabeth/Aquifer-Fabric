@@ -2,6 +2,9 @@
   "values": [
     "#aquifer:wooden_chests",
     "#c:chests/wooden/not_trapped",
+    "#c:chests/wooden/trapped",
+    "#aquifer:wooden_chests",
+    "#c:chests/wooden/not_trapped",
     "#c:chests/wooden/trapped"
   ]
 }

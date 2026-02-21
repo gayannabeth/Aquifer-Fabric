@@ -5,18 +5,17 @@ import java.util.concurrent.CompletableFuture;
 import gay.mountainspring.aquifer.tag.AquiferTags;
 import net.fabricmc.fabric.api.block.v1.BlockFunctionalityTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.BlockTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.EntityTypeTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.FluidTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.ItemTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalFluidTags;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper.WrapperLookup;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.EntityTypeTags;
@@ -24,9 +23,9 @@ import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.registry.tag.ItemTags;
 
 public class AquiferTagGen {
-	public static class BlocksGen extends FabricTagProvider<Block> {
+	public static class BlocksGen extends BlockTagProvider {
 		public BlocksGen(FabricDataOutput output, CompletableFuture<WrapperLookup> registriesFuture) {
-			super(output, RegistryKeys.BLOCK, registriesFuture);
+			super(output, registriesFuture);
 		}
 		
 		@Override
@@ -267,25 +266,25 @@ public class AquiferTagGen {
 			this.getOrCreateTagBuilder(AquiferTags.Blocks.FARMLAND_LIKE)
 			.add(Blocks.FARMLAND);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.NETHER_WART_GROWABLE)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_NETHER_WART)
 			.add(Blocks.SOUL_SAND);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.AZALEA_BUSH_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_AZALEA)
 			.add(Blocks.CLAY)
 			.addTag(AquiferTags.Blocks.DIRT_LIKE)
 			.addTag(AquiferTags.Blocks.FARMLAND_LIKE);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.NETHER_PLANT_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_NETHER_PLANT)
 			.add(Blocks.SOUL_SOIL)
 			.addTag(AquiferTags.Blocks.DIRT_LIKE)
 			.addTag(AquiferTags.Blocks.FARMLAND_LIKE)
 			.forceAddTag(BlockTags.NYLIUM);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.NETHER_FUNGUS_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_NETHER_FUNGUS)
 			.add(Blocks.MYCELIUM)
-			.addTag(AquiferTags.Blocks.NETHER_PLANT_MAY_PLACE_ON);
+			.addTag(AquiferTags.Blocks.SUPPORTS_NETHER_PLANT);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.WITHER_ROSE_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_WITHER_ROSE)
 			.add(Blocks.NETHERRACK,
 					Blocks.SOUL_SAND,
 					Blocks.SOUL_SOIL)
@@ -293,46 +292,46 @@ public class AquiferTagGen {
 			.addTag(AquiferTags.Blocks.FARMLAND_LIKE)
 			.forceAddTag(ConventionalBlockTags.NETHERRACKS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUGAR_CANE_MAY_GROW_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_SUGAR_CANE)
 			.addTag(AquiferTags.Blocks.DIRT_LIKE)
 			.forceAddTag(BlockTags.SAND)
 			.forceAddTag(ConventionalBlockTags.SANDS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUGAR_CANE_MAY_GROW_BESIDE)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_SUGAR_CANE_ADJACENTLY)
 			.add(Blocks.FROSTED_ICE);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.PROPAGULE_MAY_PLANT_ON_TOP)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_PROPAGULE)
 			.add(Blocks.CLAY)
 			.addTag(AquiferTags.Blocks.DIRT_LIKE)
 			.addTag(AquiferTags.Blocks.FARMLAND_LIKE);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.PROPAGULE_MAY_GROW_UNDER)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_PROPAGULE_ABOVE)
 			.add(Blocks.MANGROVE_LEAVES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.COCOA_MAY_GROW_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_COCOA)
 			.forceAddTag(BlockTags.JUNGLE_LOGS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.CHORUS_MAY_GROW_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_CHORUS)
 			.add(Blocks.END_STONE)
 			.forceAddTag(ConventionalBlockTags.END_STONES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.CACTUS_MAY_GROW_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_CACTUS)
 			.add(Blocks.CACTUS)
 			.forceAddTag(BlockTags.SAND)
 			.forceAddTag(ConventionalBlockTags.SANDS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.KELP_MAY_NOT_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.DOES_NOT_SUPPORT_KELP)
 			.add(Blocks.MAGMA_BLOCK);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.SEAGRASS_MAY_NOT_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.DOES_NOT_SUPPORT_SEAGRASS)
 			.add(Blocks.MAGMA_BLOCK);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.LILY_PAD_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_LILY_PAD)
 			.add(Blocks.ICE,
 					Blocks.FROSTED_ICE,
 					Blocks.WATER);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.FROGSPAWN_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_FROGSPAWN)
 			.add(Blocks.WATER);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Blocks.CANNOT_CONNECT_TO)
@@ -347,7 +346,7 @@ public class AquiferTagGen {
 			.addTag(AquiferTags.Blocks.LEAF_SLABS)
 			.addTag(AquiferTags.Blocks.LEAF_STAIRS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.END_CRYSTAL_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_END_CRYSTAL)
 			.add(Blocks.OBSIDIAN,
 					Blocks.BEDROCK)
 			.forceAddTag(ConventionalBlockTags.NORMAL_OBSIDIANS);
@@ -361,10 +360,10 @@ public class AquiferTagGen {
 					Blocks.DARK_PRISMARINE,
 					Blocks.SEA_LANTERN);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.UPWARDS_BUBBLE_COLUMN_SOURCE_BLOCKS)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_BUBBLE_COLUMN_UP)
 			.add(Blocks.SOUL_SAND);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.DOWNWARDS_BUBBLE_COLUMN_SOURCE_BLOCKS)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.SUPPORTS_BUBBLE_COLUMN_DOWN)
 			.add(Blocks.MAGMA_BLOCK);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Blocks.SHEARS_MINEABLE_FAST)
@@ -485,6 +484,9 @@ public class AquiferTagGen {
 			this.getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCE_GATES)
 			.addTag(AquiferTags.Blocks.WOODEN_FENCE_GATES);
 			
+			this.getOrCreateTagBuilder(ConventionalBlockTags.CHAINS)
+			.addTag(AquiferTags.Blocks.CHAINS);
+			
 			this.getOrCreateTagBuilder(ConventionalBlockTags.VILLAGER_JOB_SITES)
 			.addTag(AquiferTags.Blocks.LOOMS)
 			.addTag(AquiferTags.Blocks.CARTOGRAPHY_TABLES)
@@ -516,61 +518,46 @@ public class AquiferTagGen {
 			.forceAddTag(ConventionalBlockTags.STORAGE_BLOCKS_IRON)
 			.forceAddTag(ConventionalBlockTags.STORAGE_BLOCKS_NETHERITE);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.CHESTS_WOODEN_TRAPPED)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.Conventional.WOODEN_TRAPPED_CHESTS)
 			.add(Blocks.TRAPPED_CHEST);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.CHESTS_WOODEN_NOT_TRAPPED)
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.Conventional.WOODEN_NON_TRAPPED_CHESTS)
 			.add(Blocks.CHEST);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Blocks.CHESTS_NOT_TRAPPED)
-			.addTag(AquiferTags.Blocks.CHESTS_WOODEN_NOT_TRAPPED);
+			this.getOrCreateTagBuilder(AquiferTags.Blocks.Conventional.NON_TRAPPED_CHESTS)
+			.addTag(AquiferTags.Blocks.Conventional.WOODEN_NON_TRAPPED_CHESTS);
 			
 			this.getOrCreateTagBuilder(ConventionalBlockTags.CHESTS)
-			.addTag(AquiferTags.Blocks.CHESTS_NOT_TRAPPED);
+			.addTag(AquiferTags.Blocks.Conventional.NON_TRAPPED_CHESTS);
 			
 			this.getOrCreateTagBuilder(ConventionalBlockTags.TRAPPED_CHESTS)
-			.addTag(AquiferTags.Blocks.CHESTS_WOODEN_TRAPPED);
+			.addTag(AquiferTags.Blocks.Conventional.WOODEN_TRAPPED_CHESTS);
 			
 			this.getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_CHESTS)
-			.addTag(AquiferTags.Blocks.CHESTS_WOODEN_NOT_TRAPPED)
-			.addTag(AquiferTags.Blocks.CHESTS_WOODEN_TRAPPED);
+			.addTag(AquiferTags.Blocks.Conventional.WOODEN_NON_TRAPPED_CHESTS)
+			.addTag(AquiferTags.Blocks.Conventional.WOODEN_TRAPPED_CHESTS);
 			
 			this.getOrCreateTagBuilder(BlockFunctionalityTags.CAN_CLIMB_TRAPDOOR_ABOVE)
 			.addTag(AquiferTags.Blocks.LADDERS);
 		}
 	}
 	
-	public static class ItemsGen extends FabricTagProvider<Item> {
-		public ItemsGen(FabricDataOutput output, CompletableFuture<WrapperLookup> registriesFuture) {
-			super(output, RegistryKeys.ITEM, registriesFuture);
+	public static class ItemsGen extends ItemTagProvider {
+		public ItemsGen(FabricDataOutput output, CompletableFuture<WrapperLookup> registriesFuture, BlockTagProvider blockTagProvider) {
+			super(output, registriesFuture, blockTagProvider);
 		}
 		
 		@Override
 		protected void configure(WrapperLookup wrapperLookup) {
-			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_WALLS);
+			this.copy(AquiferTags.Blocks.WOODEN_WALLS, AquiferTags.Items.WOODEN_WALLS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_FENCE_GATES)
-			.add(Items.OAK_FENCE_GATE,
-					Items.SPRUCE_FENCE_GATE,
-					Items.BIRCH_FENCE_GATE,
-					Items.JUNGLE_FENCE_GATE,
-					Items.ACACIA_FENCE_GATE,
-					Items.DARK_OAK_FENCE_GATE,
-					Items.MANGROVE_FENCE_GATE,
-					Items.CHERRY_FENCE_GATE,
-					Items.BAMBOO_FENCE_GATE,
-					Items.CRIMSON_FENCE_GATE,
-					Items.WARPED_FENCE_GATE);
+			this.copy(AquiferTags.Blocks.WOODEN_FENCE_GATES, AquiferTags.Items.WOODEN_FENCE_GATES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_CHESTS)
-			.add(Items.CHEST,
-					Items.TRAPPED_CHEST);
+			this.copy(AquiferTags.Blocks.WOODEN_CHESTS, AquiferTags.Items.WOODEN_CHESTS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_BARRELS)
-			.add(Items.BARREL);
+			this.copy(AquiferTags.Blocks.WOODEN_BARRELS, AquiferTags.Items.WOODEN_BARRELS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_LADDERS)
-			.add(Items.LADDER);
+			this.copy(AquiferTags.Blocks.WOODEN_LADDERS, AquiferTags.Items.WOODEN_LADDERS);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_SIGNS)
 			.add(Items.OAK_SIGN,
@@ -598,76 +585,56 @@ public class AquiferTagGen {
 					Items.CRIMSON_HANGING_SIGN,
 					Items.WARPED_HANGING_SIGN);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.LEAF_SLABS);
-			this.getOrCreateTagBuilder(AquiferTags.Items.LEAF_STAIRS);
-			this.getOrCreateTagBuilder(AquiferTags.Items.LEAF_WALLS);
-			this.getOrCreateTagBuilder(AquiferTags.Items.LEAF_CARPETS);
+			this.copy(AquiferTags.Blocks.LEAF_SLABS, AquiferTags.Items.LEAF_SLABS);
+			this.copy(AquiferTags.Blocks.LEAF_STAIRS, AquiferTags.Items.LEAF_STAIRS);
+			this.copy(AquiferTags.Blocks.LEAF_WALLS, AquiferTags.Items.LEAF_WALLS);
+			this.copy(AquiferTags.Blocks.LEAF_CARPETS, AquiferTags.Items.LEAF_CARPETS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.LADDERS)
-			.addTag(AquiferTags.Items.WOODEN_LADDERS);
+			this.copy(AquiferTags.Blocks.LADDERS, AquiferTags.Items.LADDERS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.BARS)
-			.add(Items.IRON_BARS);
+			this.copy(AquiferTags.Blocks.BARS, AquiferTags.Items.BARS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CHAINS)
-			.add(Items.CHAIN);
+			this.copy(AquiferTags.Blocks.CHAINS, AquiferTags.Items.CHAINS);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Items.STICKS)
 			.add(Items.STICK);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.BOOKSHELVES)
-			.add(Items.BOOKSHELF);
+			this.copy(AquiferTags.Blocks.BOOKSHELVES, AquiferTags.Items.BOOKSHELVES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CRAFTING_TABLES)
-			.add(Items.CRAFTING_TABLE);
+			this.copy(AquiferTags.Blocks.CRAFTING_TABLES, AquiferTags.Items.CRAFTING_TABLES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.LOOMS)
-			.add(Items.LOOM);
+			this.copy(AquiferTags.Blocks.LOOMS, AquiferTags.Items.LOOMS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CARTOGRAPHY_TABLES)
-			.add(Items.CARTOGRAPHY_TABLE);
+			this.copy(AquiferTags.Blocks.CARTOGRAPHY_TABLES, AquiferTags.Items.CARTOGRAPHY_TABLES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.FLETCHING_TABLES)
-			.add(Items.FLETCHING_TABLE);
+			this.copy(AquiferTags.Blocks.FLETCHING_TABLES, AquiferTags.Items.FLETCHING_TABLES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.SMITHING_TABLES)
-			.add(Items.SMITHING_TABLE);
+			this.copy(AquiferTags.Blocks.SMITHING_TABLES, AquiferTags.Items.SMITHING_TABLES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.TRIPWIRE_HOOKS)
-			.add(Items.TRIPWIRE_HOOK);
+			this.copy(AquiferTags.Blocks.TRIPWIRE_HOOKS, AquiferTags.Items.TRIPWIRE_HOOKS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CRAFTED_BEEHIVES)
-			.add(Items.BEEHIVE);
+			this.copy(AquiferTags.Blocks.CRAFTED_BEEHIVES, AquiferTags.Items.CRAFTED_BEEHIVES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.LECTERNS)
-			.add(Items.LECTERN);
+			this.copy(AquiferTags.Blocks.LECTERNS, AquiferTags.Items.LECTERNS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.COMPOSTERS)
-			.add(Items.COMPOSTER);
+			this.copy(AquiferTags.Blocks.COMPOSTERS, AquiferTags.Items.COMPOSTERS);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Items.CAULDRONS)
 			.add(Items.CAULDRON);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.ENCHANTING_TABLES)
-			.add(Items.ENCHANTING_TABLE);
+			this.copy(AquiferTags.Blocks.ENCHANTING_TABLES, AquiferTags.Items.ENCHANTING_TABLES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.FURNACES)
-			.add(Items.FURNACE);
+			this.copy(AquiferTags.Blocks.FURNACES, AquiferTags.Items.FURNACES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.SMOKERS)
-			.add(Items.SMOKER);
+			this.copy(AquiferTags.Blocks.SMOKERS, AquiferTags.Items.SMOKERS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.BLAST_FURNACES)
-			.add(Items.BLAST_FURNACE);
+			this.copy(AquiferTags.Blocks.BLAST_FURNACES, AquiferTags.Items.BLAST_FURNACES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.STONECUTTERS)
-			.add(Items.STONECUTTER);
+			this.copy(AquiferTags.Blocks.STONECUTTERS, AquiferTags.Items.STONECUTTERS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.GRINDSTONES)
-			.add(Items.GRINDSTONE);
+			this.copy(AquiferTags.Blocks.GRINDSTONES, AquiferTags.Items.GRINDSTONES);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CHISELED_BOOKSHELVES)
-			.add(Items.CHISELED_BOOKSHELF);
+			this.copy(AquiferTags.Blocks.CHISELED_BOOKSHELVES, AquiferTags.Items.CHISELED_BOOKSHELVES);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Items.PRESSURE_PLATES)
 			.add(Items.HEAVY_WEIGHTED_PRESSURE_PLATE,
@@ -738,25 +705,11 @@ public class AquiferTagGen {
 			this.getOrCreateTagBuilder(AquiferTags.Items.POWDER_SNOW_WALKABLE_EQUIPMENT)
 			.add(Items.LEATHER_BOOTS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.INFESTABLE)
-			.add(Items.STONE,
-					Items.COBBLESTONE,
-					Items.STONE_BRICKS,
-					Items.CRACKED_STONE_BRICKS,
-					Items.MOSSY_STONE_BRICKS,
-					Items.CHISELED_STONE_BRICKS,
-					Items.DEEPSLATE);
+			this.copy(AquiferTags.Blocks.INFESTABLE, AquiferTags.Items.INFESTABLE);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.INFESTED)
-			.add(Items.INFESTED_STONE,
-					Items.INFESTED_COBBLESTONE,
-					Items.INFESTED_STONE_BRICKS,
-					Items.INFESTED_CRACKED_STONE_BRICKS,
-					Items.INFESTED_MOSSY_STONE_BRICKS,
-					Items.INFESTED_CHISELED_STONE_BRICKS,
-					Items.INFESTED_DEEPSLATE);
+			this.copy(AquiferTags.Blocks.INFESTED, AquiferTags.Items.INFESTED);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.WAXABLES)
+			this.getOrCreateTagBuilder(AquiferTags.Items.WAX_ITEMS)
 			.add(Items.HONEYCOMB);
 			
 			this.getOrCreateTagBuilder(AquiferTags.Items.WOODEN_TOOLS)
@@ -884,18 +837,13 @@ public class AquiferTagGen {
 					Items.PIGLIN_BANNER_PATTERN,
 					Items.SKULL_BANNER_PATTERN);
 			
-			this.getOrCreateTagBuilder(ItemTags.SLABS)
-			.addTag(AquiferTags.Items.LEAF_SLABS);
+			this.copy(BlockTags.SLABS, ItemTags.SLABS);
 			
-			this.getOrCreateTagBuilder(ItemTags.STAIRS)
-			.addTag(AquiferTags.Items.LEAF_STAIRS);
+			this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
 			
-			this.getOrCreateTagBuilder(ItemTags.WALLS)
-			.addTag(AquiferTags.Items.WOODEN_WALLS)
-			.addTag(AquiferTags.Items.LEAF_WALLS);
+			this.copy(BlockTags.WALLS, ItemTags.WALLS);
 			
-			this.getOrCreateTagBuilder(ItemTags.FENCE_GATES)
-			.addTag(AquiferTags.Items.WOODEN_FENCE_GATES);
+			this.copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
 			
 			this.getOrCreateTagBuilder(ItemTags.SIGNS)
 			.addTag(AquiferTags.Items.WOODEN_SIGNS);
@@ -903,35 +851,22 @@ public class AquiferTagGen {
 			this.getOrCreateTagBuilder(ItemTags.HANGING_SIGNS)
 			.addTag(AquiferTags.Items.WOODEN_HANGING_SIGNS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.WOODEN_BARRELS)
-			.addTag(AquiferTags.Items.WOODEN_BARRELS);
+			this.copy(ConventionalBlockTags.WOODEN_BARRELS, ConventionalItemTags.WOODEN_BARRELS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.WOODEN_CHESTS)
-			.addTag(AquiferTags.Items.WOODEN_CHESTS);
+			this.copy(ConventionalBlockTags.WOODEN_CHESTS, ConventionalItemTags.WOODEN_CHESTS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.WOODEN_FENCE_GATES)
-			.addTag(AquiferTags.Items.WOODEN_FENCE_GATES);
+			this.copy(ConventionalBlockTags.WOODEN_FENCE_GATES, ConventionalItemTags.WOODEN_FENCE_GATES);
 			
 			this.getOrCreateTagBuilder(ConventionalItemTags.WOODEN_RODS)
 			.addTag(AquiferTags.Items.STICKS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.VILLAGER_JOB_SITES)
-			.addTag(AquiferTags.Items.LOOMS)
-			.addTag(AquiferTags.Items.CARTOGRAPHY_TABLES)
-			.addTag(AquiferTags.Items.FLETCHING_TABLES)
-			.addTag(AquiferTags.Items.SMITHING_TABLES)
-			.addTag(AquiferTags.Items.LECTERNS)
-			.addTag(AquiferTags.Items.COMPOSTERS)
-			.addTag(AquiferTags.Items.SMOKERS)
-			.addTag(AquiferTags.Items.BLAST_FURNACES)
-			.addTag(AquiferTags.Items.STONECUTTERS)
-			.addTag(AquiferTags.Items.GRINDSTONES);
+			this.copy(ConventionalBlockTags.VILLAGER_JOB_SITES, ConventionalItemTags.VILLAGER_JOB_SITES);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES)
-			.addTag(AquiferTags.Items.CRAFTING_TABLES);
+			this.copy(ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES, ConventionalItemTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.PLAYER_WORKSTATIONS_FURNACES)
-			.addTag(AquiferTags.Items.FURNACES);
+			this.copy(ConventionalBlockTags.PLAYER_WORKSTATIONS_FURNACES, ConventionalItemTags.PLAYER_WORKSTATIONS_FURNACES);
+			
+			this.copy(ConventionalBlockTags.CHAINS, ConventionalItemTags.CHAINS);
 			
 			this.getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS)
 			.forceAddTag(ConventionalItemTags.NORMAL_COBBLESTONES)
@@ -954,52 +889,45 @@ public class AquiferTagGen {
 			this.getOrCreateTagBuilder(ItemTags.DYEABLE)
 			.addTag(AquiferTags.Items.LEATHER_ARMORS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CHESTS_WOODEN_TRAPPED)
-			.add(Items.TRAPPED_CHEST);
+			this.copy(AquiferTags.Blocks.Conventional.WOODEN_TRAPPED_CHESTS, AquiferTags.Items.Conventional.WOODEN_TRAPPED_CHESTS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CHESTS_WOODEN_NOT_TRAPPED)
-			.add(Items.CHEST);
+			this.copy(AquiferTags.Blocks.Conventional.WOODEN_NON_TRAPPED_CHESTS, AquiferTags.Items.Conventional.WOODEN_NON_TRAPPED_CHESTS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.CHESTS_NOT_TRAPPED)
-			.addTag(AquiferTags.Items.CHESTS_WOODEN_NOT_TRAPPED);
+			this.copy(AquiferTags.Blocks.Conventional.NON_TRAPPED_CHESTS, AquiferTags.Items.Conventional.NON_TRAPPED_CHESTS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.CHESTS)
-			.addTag(AquiferTags.Items.CHESTS_NOT_TRAPPED);
+			this.copy(ConventionalBlockTags.CHESTS, ConventionalItemTags.CHESTS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.TRAPPED_CHESTS)
-			.addTag(AquiferTags.Items.CHESTS_WOODEN_TRAPPED);
+			this.copy(ConventionalBlockTags.TRAPPED_CHESTS, ConventionalItemTags.TRAPPED_CHESTS);
 			
-			this.getOrCreateTagBuilder(ConventionalItemTags.WOODEN_CHESTS)
-			.addTag(AquiferTags.Items.CHESTS_WOODEN_NOT_TRAPPED)
-			.addTag(AquiferTags.Items.CHESTS_WOODEN_TRAPPED);
+			this.copy(ConventionalBlockTags.WOODEN_CHESTS, ConventionalItemTags.WOODEN_CHESTS);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Items.FLINTS)
+			this.getOrCreateTagBuilder(AquiferTags.Items.Conventional.FLINTS)
 			.add(Items.FLINT);
 		}
 	}
 	
-	public static class FluidsGen extends FabricTagProvider<Fluid> {
+	public static class FluidsGen extends FluidTagProvider {
 		public FluidsGen(FabricDataOutput output, CompletableFuture<WrapperLookup> registriesFuture) {
-			super(output, RegistryKeys.FLUID, registriesFuture);
+			super(output, registriesFuture);
 		}
 		
 		@Override
 		protected void configure(WrapperLookup wrapperLookup) {
-			this.getOrCreateTagBuilder(AquiferTags.Fluids.SUGAR_CANE_MAY_GROW_BESIDE)
+			this.getOrCreateTagBuilder(AquiferTags.Fluids.SUPPORTS_SUGAR_CANE_ADJACENTLY)
 			.forceAddTag(FluidTags.WATER)
 			.forceAddTag(ConventionalFluidTags.WATER);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Fluids.LILY_PAD_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Fluids.SUPPORTS_LILY_PAD)
 			.add(Fluids.WATER);
 			
-			this.getOrCreateTagBuilder(AquiferTags.Fluids.FROGSPAWN_MAY_PLACE_ON)
+			this.getOrCreateTagBuilder(AquiferTags.Fluids.SUPPORTS_FROGSPAWN)
 			.add(Fluids.WATER);
 		}
 	}
 	
-	public static class EntityTypesGen extends FabricTagProvider<EntityType<?>> {
+	public static class EntityTypesGen extends EntityTypeTagProvider {
 		public EntityTypesGen(FabricDataOutput output, CompletableFuture<WrapperLookup> registriesFuture) {
-			super(output, RegistryKeys.ENTITY_TYPE, registriesFuture);
+			super(output, registriesFuture);
 		}
 		
 		@Override

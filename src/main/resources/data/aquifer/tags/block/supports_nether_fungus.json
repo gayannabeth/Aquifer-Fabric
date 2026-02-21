@@ -1,6 +1,6 @@
 {
   "values": [
     "minecraft:mycelium",
-    "#aquifer:nether_plant_may_place_on"
+    "#aquifer:supports_nether_plant"
   ]
 }

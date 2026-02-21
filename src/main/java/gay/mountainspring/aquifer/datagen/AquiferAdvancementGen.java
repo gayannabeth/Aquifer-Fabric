@@ -28,7 +28,7 @@ public class AquiferAdvancementGen extends FabricAdvancementProvider {
 		consumer.accept(Advancement.Builder.create()
 		.criterion("wax_on", ItemCriterion.Conditions.createItemUsedOnBlock(
 			LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().tag(AquiferTags.Blocks.COMPLETES_WAX_ON_ADVANCEMENT)),
-			ItemPredicate.Builder.create().tag(AquiferTags.Items.WAXABLES)
+			ItemPredicate.Builder.create().tag(AquiferTags.Items.WAX_ITEMS)
 		))
 		.rewards(AdvancementRewards.Builder.function(Identifier.of(Aquifer.MOD_ID, "complete_wax_on")))
 		.build(Identifier.of(Aquifer.MOD_ID, "husbandry/wax_on_helper")));

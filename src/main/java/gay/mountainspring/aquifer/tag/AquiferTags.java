@@ -89,43 +89,43 @@ public class AquiferTags {
 		public static final TagKey<Block> DIRT_LIKE = create("dirt_like");
 		public static final TagKey<Block> FARMLAND_LIKE = create("farmland_like");
 		
-		public static final TagKey<Block> NETHER_WART_GROWABLE = create("nether_wart_growable");
+		public static final TagKey<Block> SUPPORTS_NETHER_WART = create("supports_nether_wart");
 		
-		public static final TagKey<Block> AZALEA_BUSH_MAY_PLACE_ON = create("azalea_bush_may_place_on");
+		public static final TagKey<Block> SUPPORTS_AZALEA = create("supports_azalea_bush");
 		
-		public static final TagKey<Block> NETHER_PLANT_MAY_PLACE_ON = create("nether_plant_may_place_on");
-		public static final TagKey<Block> NETHER_FUNGUS_MAY_PLACE_ON = create("nether_fungus_may_place_on");
+		public static final TagKey<Block> SUPPORTS_NETHER_PLANT = create("supports_nether_plant");
+		public static final TagKey<Block> SUPPORTS_NETHER_FUNGUS = create("supports_nether_fungus");
 		
-		public static final TagKey<Block> WITHER_ROSE_MAY_PLACE_ON = create("wither_rose_may_place_on");
+		public static final TagKey<Block> SUPPORTS_WITHER_ROSE = create("supports_wither_rose");
 		
-		public static final TagKey<Block> SUGAR_CANE_MAY_GROW_ON = create("sugar_cane_may_grow_on");
-		public static final TagKey<Block> SUGAR_CANE_MAY_GROW_BESIDE = create("sugar_cane_may_grow_beside");
+		public static final TagKey<Block> SUPPORTS_SUGAR_CANE = create("supports_sugar_cane");
+		public static final TagKey<Block> SUPPORTS_SUGAR_CANE_ADJACENTLY = create("supports_sugar_cane_adjacently");
 		
-		public static final TagKey<Block> PROPAGULE_MAY_PLANT_ON_TOP = create("propagule_may_plant_on_top");
-		public static final TagKey<Block> PROPAGULE_MAY_GROW_UNDER = create("propagule_may_grow_under");
+		public static final TagKey<Block> SUPPORTS_PROPAGULE = create("supports_propagule");
+		public static final TagKey<Block> SUPPORTS_PROPAGULE_ABOVE = create("supports_propagule_above");
 		
-		public static final TagKey<Block> COCOA_MAY_GROW_ON = create("cocoa_may_grow_on");
+		public static final TagKey<Block> SUPPORTS_COCOA = create("supports_cocoa");
 		
-		public static final TagKey<Block> CHORUS_MAY_GROW_ON = create("chorus_may_grow_on");
+		public static final TagKey<Block> SUPPORTS_CHORUS = create("supports_chorus");
 		
-		public static final TagKey<Block> CACTUS_MAY_GROW_ON = create("cactus_may_grow_on");
+		public static final TagKey<Block> SUPPORTS_CACTUS = create("supports_cactus");
 		
-		public static final TagKey<Block> SEAGRASS_MAY_NOT_PLACE_ON = create("seagrass_may_not_place_on");
-		public static final TagKey<Block> KELP_MAY_NOT_PLACE_ON = create("kelp_may_not_place_on");
+		public static final TagKey<Block> DOES_NOT_SUPPORT_SEAGRASS = create("does_not_support_seagrass");
+		public static final TagKey<Block> DOES_NOT_SUPPORT_KELP = create("does_not_support_kelp");
 		
-		public static final TagKey<Block> LILY_PAD_MAY_PLACE_ON = create("lily_pad_may_place_on");
-		public static final TagKey<Block> FROGSPAWN_MAY_PLACE_ON = create("frogspawn_may_place_on");
+		public static final TagKey<Block> SUPPORTS_LILY_PAD = create("supports_lily_pad");
+		public static final TagKey<Block> SUPPORTS_FROGSPAWN = create("supports_frogspawn");
 		
 		public static final TagKey<Block> CANNOT_CONNECT_TO = create("cannot_connect_to");
 		
-		public static final TagKey<Block> END_CRYSTAL_MAY_PLACE_ON = create("end_crystal_may_place_on");
+		public static final TagKey<Block> SUPPORTS_END_CRYSTAL = create("supports_end_crystal");
 		
 		public static final TagKey<Block> SIGNAL_FIRE_BASE_BLOCKS = create("signal_fire_base_blocks");
 		
 		public static final TagKey<Block> CONDUIT_ACTIVATING_BLOCKS = create("conduit_activating_blocks");
 		
-		public static final TagKey<Block> UPWARDS_BUBBLE_COLUMN_SOURCE_BLOCKS = create("bubble_column_source_blocks/up");
-		public static final TagKey<Block> DOWNWARDS_BUBBLE_COLUMN_SOURCE_BLOCKS = create("bubble_column_source_blocks/down");
+		public static final TagKey<Block> SUPPORTS_BUBBLE_COLUMN_UP = create("supports_bubble_column/up");
+		public static final TagKey<Block> SUPPORTS_BUBBLE_COLUMN_DOWN = create("supports_bubble_column/down");
 		
 		public static final TagKey<Block> SHEARS_MINEABLE = create("mineable/shears");
 		public static final TagKey<Block> SHEARS_MINEABLE_SLOW = create("mineable/shears/slow");
@@ -135,9 +135,15 @@ public class AquiferTags {
 		public static final TagKey<Block> INFESTABLE = create("infestable");
 		public static final TagKey<Block> INFESTED = create("infested");
 		
-		public static final TagKey<Block> CHESTS_WOODEN_TRAPPED = createConventional("chests/wooden/trapped");
-		public static final TagKey<Block> CHESTS_WOODEN_NOT_TRAPPED = createConventional("chests/wooden/not_trapped");
-		public static final TagKey<Block> CHESTS_NOT_TRAPPED = createConventional("chests/not_trapped");
+		public static class Conventional {
+			public static final TagKey<Block> WOODEN_TRAPPED_CHESTS = create("chests/wooden/trapped");
+			public static final TagKey<Block> WOODEN_NON_TRAPPED_CHESTS = create("chests/wooden/not_trapped");
+			public static final TagKey<Block> NON_TRAPPED_CHESTS = create("chests/not_trapped");
+			
+			public static TagKey<Block> create(String path) {
+				return AquiferTags.Blocks.createConventional(path);
+			}
+		}
 		
 		public static TagKey<Block> create(String path) {
 			return AquiferTags.create(RegistryKeys.BLOCK, path);
@@ -243,7 +249,7 @@ public class AquiferTags {
 		public static final TagKey<Item> INFESTABLE = create("infestable");
 		public static final TagKey<Item> INFESTED = create("infested");
 		
-		public static final TagKey<Item> WAXABLES = create("waxables");
+		public static final TagKey<Item> WAX_ITEMS = create("wax_items");
 		
 		public static final TagKey<Item> WOODEN_TOOLS = create("wooden_tools");
 		public static final TagKey<Item> STONE_TOOLS = create("stone_tools");
@@ -265,11 +271,17 @@ public class AquiferTags {
 		
 		public static final TagKey<Item> BANNER_PATTERNS = create("banner_patterns");
 		
-		public static final TagKey<Item> FLINTS = createConventional("flints");
-		
-		public static final TagKey<Item> CHESTS_WOODEN_TRAPPED = createConventional("chests/wooden/trapped");
-		public static final TagKey<Item> CHESTS_WOODEN_NOT_TRAPPED = createConventional("chests/wooden/not_trapped");
-		public static final TagKey<Item> CHESTS_NOT_TRAPPED = createConventional("chests/not_trapped");
+		public static class Conventional {
+			public static final TagKey<Item> FLINTS = create("flints");
+			
+			public static final TagKey<Item> WOODEN_TRAPPED_CHESTS = create("chests/wooden/trapped");
+			public static final TagKey<Item> WOODEN_NON_TRAPPED_CHESTS = create("chests/wooden/not_trapped");
+			public static final TagKey<Item> NON_TRAPPED_CHESTS = create("chests/not_trapped");
+			
+			public static TagKey<Item> create(String path) {
+				return AquiferTags.Items.createConventional(path);
+			}
+		}
 		
 		public static TagKey<Item> create(String path) {
 			return AquiferTags.create(RegistryKeys.ITEM, path);
@@ -283,10 +295,10 @@ public class AquiferTags {
 	public static class Fluids {
 		private Fluids() {}
 		
-		public static final TagKey<Fluid> SUGAR_CANE_MAY_GROW_BESIDE = create("sugar_cane_may_grow_beside");
+		public static final TagKey<Fluid> SUPPORTS_SUGAR_CANE_ADJACENTLY = create("supports_sugar_cane_adjacently");
 		
-		public static final TagKey<Fluid> LILY_PAD_MAY_PLACE_ON = create("lily_pad_may_place_on");
-		public static final TagKey<Fluid> FROGSPAWN_MAY_PLACE_ON = create("frogspawn_may_place_on");
+		public static final TagKey<Fluid> SUPPORTS_LILY_PAD = create("supports_lily_pad");
+		public static final TagKey<Fluid> SUPPORTS_FROGSPAWN = create("supports_frogspawn");
 		
 		public static TagKey<Fluid> create(String path) {
 			return AquiferTags.create(RegistryKeys.FLUID, path);

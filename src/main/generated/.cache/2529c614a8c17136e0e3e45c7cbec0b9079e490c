@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-05T08:24:07.9222575	Aquifer/Tags for minecraft:item
+// 1.21.1	2026-02-20T22:49:27.8195977	Aquifer/Tags for minecraft:item
 5e10fd7c8a9d685e4c762184ef2b091ce5f7afc6 data\aquifer\tags\item\chiseled_bookshelves.json
 ea7a1c10e08e968f684d4d2a7c58adad8669e5c6 data\minecraft\tags\item\stairs.json
 4d4cb37a2a8721ea2b3d60b9386678d7e8158f88 data\aquifer\tags\item\elytra_repair_materials.json
@@ -38,7 +38,6 @@ b6418e2b6d178af92ae954205267a4c3a49025a5 data\aquifer\tags\item\netherite_tools.
 023be715877cb6033c3e30eb45440eb56daa8d72 data\aquifer\tags\item\wolf_armors.json
 e092cbcf7c1cd2c9eb97967d323aca7aa45549d3 data\aquifer\tags\item\diamond_tools.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\aquifer\tags\item\leaf_slabs.json
-d878c230cd5cb1b54fbe6e53f3ef71379d080c6f data\aquifer\tags\item\waxables.json
 bbc20b80eb6d2c5ba637df9cdba380ff52f9ec46 data\aquifer\tags\item\iron_armor_materials.json
 52772fadb90feaba29211256abc491dd886ce4ef data\aquifer\tags\item\composters.json
 85d7382646a5314ca79374c13b32808bb77cb164 data\aquifer\tags\item\netherite_armor_materials.json
@@ -49,6 +48,7 @@ a304e05543779e884c686bc0f0a34ae2cb011fac data\c\tags\item\chests\trapped.json
 1a0022d9575f2529a9374b04ac85eb7f91c13b94 data\aquifer\tags\item\horse_armors.json
 cffcdac0c57dcecbcbf6b213e4a0a1b5c8ccadde data\aquifer\tags\item\bars.json
 c7aeee83f93b02809f5f39669f557350b98531f0 data\aquifer\tags\item\gold_armors.json
+32508af9fe53001bfe13a0dc67717cbf866501f8 data\c\tags\item\chains.json
 ad875ca25af73c12ae6ac4bbefe28c1b8f6c4a93 data\c\tags\item\chests\not_trapped.json
 0eae3d133693416d7513ac4e984d3414f07fd1b2 data\aquifer\tags\item\ladders.json
 e9c5bc6cbfafcd8a4884fd1f8a2474632369960a data\aquifer\tags\item\wooden_signs.json
@@ -76,9 +76,10 @@ b907fb507a32c7f101ca550e859b739d469df1b7 data\aquifer\tags\item\leather_armor_ma
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\aquifer\tags\item\damage_proof\despawn.json
 d112ca7c2bd2090e9bd6b607aca215f24c0e92c7 data\aquifer\tags\item\wooden_ladders.json
 ddcfeb03849cc33c36357875a58eeb08335f7c7f data\aquifer\tags\item\powder_snow_walkable_equipment.json
+d878c230cd5cb1b54fbe6e53f3ef71379d080c6f data\aquifer\tags\item\wax_items.json
 c7d01e5a193876f3ce0d9c8e7df7111d3ea7e3ef data\aquifer\tags\item\wooden_hanging_signs.json
 da47c4a3f08fcfa641ff36c2a1cb230b8c37383a data\c\tags\item\chests\wooden\not_trapped.json
-704e0719cb6a373c15d7f69a1ec38ebf483d27d7 data\c\tags\item\chests\wooden.json
+0b5f9bf0cb1996a2413940cfc2bacff6a64223c5 data\c\tags\item\chests\wooden.json
 137e0e99781f4b4ed4a29c3dd5132f0e72a90c50 data\aquifer\tags\item\blast_furnaces.json
 269fcb0d7980156a2d8c271bfb048968ebc0fb79 data\aquifer\tags\item\crafting_tables.json
 4a36346ec31fa0b45dd3e8eec01fdb8d360e79b3 data\aquifer\tags\item\gold_tool_materials.json
