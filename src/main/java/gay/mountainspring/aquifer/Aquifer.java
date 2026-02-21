@@ -8,11 +8,8 @@ import gay.mountainspring.aquifer.block.cauldron.AquiferCauldronBehavior;
 import gay.mountainspring.aquifer.block.cauldron.CauldronContentsType;
 import gay.mountainspring.aquifer.block.cauldron.CauldronGroup;
 import gay.mountainspring.aquifer.block.entity.AquiferBlockEntityTypes;
-import gay.mountainspring.aquifer.loot.condition.AquiferLootConditionTypes;
-import gay.mountainspring.aquifer.loot.condition.predicate.number.LootNumberPredicates;
 import gay.mountainspring.aquifer.loot.function.AquiferLootFunctionTypes;
 import gay.mountainspring.aquifer.loot.provider.number.AquiferLootNumberProviderTypes;
-import gay.mountainspring.aquifer.loot.provider.number.expression.LootNumberExpressions;
 import gay.mountainspring.aquifer.registry.AquiferRegistries;
 import gay.mountainspring.aquifer.util.BlockUtil;
 import gay.mountainspring.aquifer.util.ItemUtil;
@@ -42,11 +39,8 @@ public class Aquifer implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		AquiferRegistries.init();
-		LootNumberExpressions.init();
-		LootNumberPredicates.init();
 		AquiferLootNumberProviderTypes.init();
 		AquiferLootFunctionTypes.init();
-		AquiferLootConditionTypes.init();
 		AquiferBlockTypes.init();
 		AquiferBlockEntityTypes.init();
 		CauldronGroup.init();

@@ -16,7 +16,6 @@ public class AquiferLootNumberProviderTypes {
 	
 	public static final LootNumberProviderType BLOCK_STATE_PROPERTY = register("block_state_property", BlockStatePropertyLootNumberProvider.CODEC);
 	public static final LootNumberProviderType ENTITY_PROPERTY = register("entity_property", EntityPropertyLootNumberProvider.CODEC);
-	public static final LootNumberProviderType EXPRESSION = register("expression", ExpressionLootNumberProvider.CODEC);
 	
 	public static LootNumberProviderType register(String name, MapCodec<? extends LootNumberProvider> codec) {
 		return Registry.register(Registries.LOOT_NUMBER_PROVIDER_TYPE, Identifier.of(Aquifer.MOD_ID, name), new LootNumberProviderType(codec));
