@@ -60,8 +60,7 @@ public record EntityPropertyLootNumberProvider(LootContext.EntityTarget entity, 
 	
 	@Override
 	public LootNumberProviderType getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return AquiferLootNumberProviderTypes.ENTITY_PROPERTY;
 	}
 	
 	@Override
