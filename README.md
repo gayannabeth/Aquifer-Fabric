@@ -175,9 +175,9 @@ Block that silverfish have hidden in.
 `infestable`
 `infested`
 #### `wooden_signs`
-Partially copied from the block tag, can smelt 1.5 items.
+Partially copied from the block tag, can smelt 1.5 items; the vanilla `minecraft:signs` tag is no loner used for furnace fuel.
 #### `wooden_hanging_signs`
-Partially copied from the block tag, can smelt 4 items.
+Partially copied from the block tag, can smelt 4 items; the vanilla `minecraft:hanging_signs` tag is no loner used for furnace fuel.
 #### `sticks`
 For sticks. Can smelt half an item.
 #### `cauldrons`
