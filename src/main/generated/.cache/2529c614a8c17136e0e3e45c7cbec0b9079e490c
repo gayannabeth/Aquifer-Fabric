@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-20T22:49:27.8195977	Aquifer/Tags for minecraft:item
+// 1.21.1	2026-03-25T18:10:28.1597944	Aquifer/Tags for minecraft:item
 5e10fd7c8a9d685e4c762184ef2b091ce5f7afc6 data\aquifer\tags\item\chiseled_bookshelves.json
 ea7a1c10e08e968f684d4d2a7c58adad8669e5c6 data\minecraft\tags\item\stairs.json
 4d4cb37a2a8721ea2b3d60b9386678d7e8158f88 data\aquifer\tags\item\elytra_repair_materials.json
@@ -97,5 +97,5 @@ b435c2fd86b15c24de9661bcdf0afe77883ea27c data\c\tags\item\chests.json
 494ca9b4db86d56476eb2efb48663f52e28504dc data\c\tags\item\villager_job_sites.json
 e1e00a5ad82d7d37aaf2464dc1a94a90a9fb3738 data\aquifer\tags\item\netherite_armors.json
 432028ec391e9d58fa10e41fbccb89390f486ada data\aquifer\tags\item\turtle_armors.json
-2e32a7b83e54ddce24aaeff94c215bb46e0c6628 data\aquifer\tags\item\respawn_anchor_charge_items.json
 c755714b6eef8aaa54dd664b5e720d4d2ad80aba data\minecraft\tags\item\stone_crafting_materials.json
+2e32a7b83e54ddce24aaeff94c215bb46e0c6628 data\aquifer\tags\item\respawn_anchor_charge_items.json

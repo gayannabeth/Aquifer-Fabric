@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:dolphin",
+    "minecraft:drowned",
+    "minecraft:glow_squid",
+    "minecraft:husk",
+    "minecraft:mule",
+    "minecraft:piglin",
+    "minecraft:polar_bear",
+    "minecraft:skeleton_horse",
+    "minecraft:squid",
+    "minecraft:zombie",
+    "minecraft:zombie_horse",
+    "minecraft:zombie_villager",
+    "minecraft:zombified_piglin"
+  ]
+}

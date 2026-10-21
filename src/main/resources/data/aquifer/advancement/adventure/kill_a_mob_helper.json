@@ -1,0 +1,27 @@
+{
+  "criteria": {
+    "kill_a_mob": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "#aquifer:completes_monster_hunter_advancement"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "requirements": [
+    [
+      "kill_a_mob"
+    ]
+  ],
+  "rewards": {
+    "function": "aquifer:complete_kill_a_mob"
+  },
+  "sends_telemetry_event": true
+}

@@ -304,5 +304,22 @@ public class AquiferLangGen extends FabricLanguageProvider {
 		builder.add(AquiferTags.EntityTypes.WEAVING_IMMUNE, "Weaving Immune");
 		builder.add(AquiferTags.EntityTypes.OOZING_IMMUNE, "Oozing Immune");
 		builder.add(AquiferTags.EntityTypes.INFESTED_IMMUNE, "Infested Immune");
+		
+		builder.add(AquiferTags.EntityTypes.HOSTILE, "Hostile");
+		builder.add(AquiferTags.EntityTypes.PASSIVE, "Passive");
+		builder.add(AquiferTags.EntityTypes.NEUTRAL, "Neutral");
+		
+		builder.add(AquiferTags.EntityTypes.TAMEABLE, "Tameable");
+		builder.add(AquiferTags.EntityTypes.CONSTRUCTABLE, "Constructable");
+		builder.add(AquiferTags.EntityTypes.BUCKETABLE, "Bucketable");
+		builder.add(AquiferTags.EntityTypes.RIDEABLE, "Rideable");
+		
+		builder.add(AquiferTags.EntityTypes.HAS_BABY, "Has Baby Form");
+		
+		builder.add(AquiferTags.EntityTypes.CAN_BREED, "Can Breed");
+		builder.add(AquiferTags.EntityTypes.CAN_BREED_MANUALLY, "Can Be Bred By Player");
+		builder.add(AquiferTags.EntityTypes.CAN_BREED_INDEPENDENTLY, "Can Breed Without Player Input");
+		
+		builder.add(AquiferTags.EntityTypes.COMPLETES_MONSTER_HUNTER_ADVANCEMENT, "Completes Monster Hunter Advancement");
 	}
 }

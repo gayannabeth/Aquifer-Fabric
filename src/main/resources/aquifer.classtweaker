@@ -15,3 +15,5 @@ transitive-inject-interface net/minecraft/block/AbstractCauldronBlock gay/mounta
 transitive-inject-interface net/minecraft/block/LeveledCauldronBlock gay/mountainspring/aquifer/block/AquiferLeveledCauldronExtensions
 transitive-inject-interface net/minecraft/item/ItemStack gay/mountainspring/aquifer/item/AquiferItemStack
 transitive-inject-interface net/minecraft/item/Item$Settings gay/mountainspring/aquifer/item/AquiferItemSettings
+transitive-inject-interface net/minecraft/advancement/Advancement$Builder gay/mountainspring/aquifer/advancement/AquiferAdvancementBuilder
+accessible field net/minecraft/server/ServerAdvancementLoader registryLookup Lnet/minecraft/registry/RegistryWrapper$WrapperLookup;

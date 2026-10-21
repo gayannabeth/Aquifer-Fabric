@@ -3,6 +3,7 @@ package gay.mountainspring.aquifer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import gay.mountainspring.aquifer.advancement.AdvancementEvents;
 import gay.mountainspring.aquifer.block.AquiferBlockTypes;
 import gay.mountainspring.aquifer.block.cauldron.AquiferCauldronBehavior;
 import gay.mountainspring.aquifer.block.cauldron.CauldronContentsType;
@@ -18,7 +19,10 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;

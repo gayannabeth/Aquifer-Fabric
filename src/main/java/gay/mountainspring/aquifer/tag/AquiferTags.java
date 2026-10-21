@@ -354,6 +354,23 @@ public class AquiferTags {
 		public static final TagKey<EntityType<?>> OOZING_IMMUNE = create("effect_immune/oozing");
 		public static final TagKey<EntityType<?>> INFESTED_IMMUNE = create("effect_immune/infested");
 		
+		public static final TagKey<EntityType<?>> HOSTILE = create("hostile");
+		public static final TagKey<EntityType<?>> PASSIVE = create("passive");
+		public static final TagKey<EntityType<?>> NEUTRAL = create("neutral");
+		
+		public static final TagKey<EntityType<?>> TAMEABLE = create("tameable");
+		public static final TagKey<EntityType<?>> CONSTRUCTABLE = create("constructable");
+		public static final TagKey<EntityType<?>> BUCKETABLE = create("bucketable");
+		public static final TagKey<EntityType<?>> RIDEABLE = create("rideable");
+		
+		public static final TagKey<EntityType<?>> HAS_BABY = create("has_baby");
+		
+		public static final TagKey<EntityType<?>> CAN_BREED = create("can_breed");
+		public static final TagKey<EntityType<?>> CAN_BREED_MANUALLY = create("can_breed/manual");
+		public static final TagKey<EntityType<?>> CAN_BREED_INDEPENDENTLY = create("can_breed/independent");
+		
+		public static final TagKey<EntityType<?>> COMPLETES_MONSTER_HUNTER_ADVANCEMENT = create("completes_monster_hunter_advancement");
+		
 		public static TagKey<EntityType<?>> create(String path) {
 			return AquiferTags.create(RegistryKeys.ENTITY_TYPE, path);
 		}

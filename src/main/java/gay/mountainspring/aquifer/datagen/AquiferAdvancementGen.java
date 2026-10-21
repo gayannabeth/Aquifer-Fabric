@@ -11,7 +11,9 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.ItemCriterion;
+import net.minecraft.advancement.criterion.OnKilledCriterion;
 import net.minecraft.predicate.BlockPredicate;
+import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.RegistryWrapper.WrapperLookup;
@@ -40,5 +42,10 @@ public class AquiferAdvancementGen extends FabricAdvancementProvider {
 		))
 		.rewards(AdvancementRewards.Builder.function(Identifier.of(Aquifer.MOD_ID, "complete_wax_off")))
 		.build(Identifier.of(Aquifer.MOD_ID, "husbandry/wax_off_helper")));
+		
+		consumer.accept(Advancement.Builder.create()
+		.criterion("kill_a_mob", OnKilledCriterion.Conditions.createPlayerKilledEntity(EntityPredicate.Builder.create().type(AquiferTags.EntityTypes.COMPLETES_MONSTER_HUNTER_ADVANCEMENT)))
+		.rewards(AdvancementRewards.Builder.function(Identifier.of(Aquifer.MOD_ID, "complete_kill_a_mob")))
+		.build(Identifier.of(Aquifer.MOD_ID, "adventure/kill_a_mob_helper")));
 	}
 }
