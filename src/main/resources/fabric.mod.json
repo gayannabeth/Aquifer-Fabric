@@ -31,7 +31,7 @@
 		"client": [
 			"gay.mountainspring.aquifer.client.AquiferClient"
 		],
-		"disabled-fabric-datagen": [
+		"fabric-datagen": [
 			"gay.mountainspring.aquifer.datagen.AquiferDataGen"
 		]
 	},
