@@ -1,15 +1,11 @@
 package gay.mountainspring.aquifer.util;
 
 import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.Nullable;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 
 import gay.mountainspring.aquifer.item.component.AquiferComponentTypes;
 import gay.mountainspring.aquifer.mixin.ItemAccessor;
@@ -18,65 +14,24 @@ import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ToolComponent;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BookItem;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.MaceItem;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.TridentItem;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Unit;
 
 public class ItemUtil {
 	private ItemUtil() {}
 	
 	public static void init() {}
-	
-	private static final Map<TagKey<Item>, Predicate<DamageSource>> ITEM_TAG_DAMAGE_HANDLERS = Maps.newHashMap();
-	
-	/**
-	 * 
-	 * @return an immutable copy of the {@link Map} mapping item tags to an item entity damage handler
-	 */
-	public static Map<TagKey<Item>, Predicate<DamageSource>> itemTagDamageHandlers() {
-		return ImmutableMap.copyOf(ITEM_TAG_DAMAGE_HANDLERS);
-	}
-	
-	/**
-	 * Adds a handler for item entity damaging for the given item tag
-	 * @param tag the {@link TagKey} of the tag to handle damage for
-	 * @param predicate a predicate to test on the damage source
-	 */
-	public static void addItemTagDamageHandler(TagKey<Item> tag, Predicate<DamageSource> predicate) {
-		ITEM_TAG_DAMAGE_HANDLERS.putIfAbsent(tag, predicate);
-	}
-	
-	/**
-	 * Adds a handler that returns true when the damage source is of the given damage type tag
-	 * @param itemTag the {@link TagKey} of the tag to handle damage for
-	 * @param damageTag the {@link TagKey} of the {@link DamageType} to set the tag immune to
-	 */
-	public static void addItemTagDamageHandler(TagKey<Item> itemTag, TagKey<DamageType> damageTag) {
-		addItemTagDamageHandler(itemTag, damageSource -> damageSource.isIn(damageTag));
-	}
-	
-	/**
-	 * Adds a handler that returns true when the damage source is of the given damage type
-	 * @param tag the {@link TagKey} of the tag to handle damage for
-	 * @param damageType the {@link RegistryKey} of the {@link DamageType} to set the tag immune to
-	 */
-	public static void addItemTagDamageHandler(TagKey<Item> tag, RegistryKey<DamageType> damageType) {
-		addItemTagDamageHandler(tag, damageSource -> damageSource.isOf(damageType));
-	}
 	
 	/**
 	 * Sets a recipe remainder item for an existing item
@@ -88,10 +43,6 @@ public class ItemUtil {
 	}
 	
 	static {
-		addItemTagDamageHandler(AquiferTags.Items.FIRE_PROOF, DamageTypeTags.IS_FIRE);
-		addItemTagDamageHandler(AquiferTags.Items.EXPLOSION_PROOF, DamageTypeTags.IS_EXPLOSION);
-		addItemTagDamageHandler(AquiferTags.Items.CACTUS_PROOF, DamageTypes.CACTUS);
-		
 		DefaultItemComponentEvents.MODIFY.register(context -> {
 			context.modify(item -> item.getDefaultStack().getComponents().contains(DataComponentTypes.FOOD), (builder, item) -> {
 				builder.getOrCreate(AquiferComponentTypes.DRINK_SOUND, () -> Registries.SOUND_EVENT.getEntry(item.getDrinkSound()));
@@ -123,6 +74,7 @@ public class ItemUtil {
 			context.modify(item -> item instanceof BookItem, (builder, item) -> {
 				builder.getOrCreate(AquiferComponentTypes.ENCHANTABILITY, () -> item.getEnchantability());
 			});
+			context.modify(Items.NETHER_STAR, builder -> builder.getOrCreate(AquiferComponentTypes.BLAST_RESISTANT, () -> Unit.INSTANCE));
 		});
 		
 		FuelRegistry reg = FuelRegistry.INSTANCE;

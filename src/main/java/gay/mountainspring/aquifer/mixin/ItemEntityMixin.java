@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import gay.mountainspring.aquifer.item.component.AquiferComponentTypes;
 import gay.mountainspring.aquifer.tag.AquiferTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -20,7 +21,7 @@ public abstract class ItemEntityMixin extends Entity implements Ownable {
 	
 	@Inject(at = @At("TAIL"), method = "<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;DDD)V")
 	private void constructorInjected(World world, double x, double y, double z, ItemStack stack, double xVelocity, double yVelocity, double zVelocity, CallbackInfo info) {
-		if (stack.isIn(AquiferTags.Items.DESPAWN_PROOF))
+		if (stack.isIn(AquiferTags.Items.DESPAWN_PROOF) || stack.contains(AquiferComponentTypes.DOESNT_DESPAWN))
 			((ItemEntity) (Object) this).setNeverDespawn();
 	}
 	

@@ -936,53 +936,49 @@ public class AquiferTagGen {
 			.add(EntityType.OCELOT,
 					EntityType.PARROT);
 			
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.SPEED_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.SLOWNESS_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.HASTE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.MINING_FATIGUE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.STRENGTH_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.INSTANT_HEALTH_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.INSTANT_DAMAGE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.JUMP_BOOST_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.NAUSEA_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.REGENERATION_IMMUNE)
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_SPEED);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_SLOWNESS);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_HASTE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_MINING_FATIGUE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_STRENGTH);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_INSTANT_HEALTH);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_INSTANT_DAMAGE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_JUMP_BOOST);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_NAUSEA);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_REGENERATION)
 			.forceAddTag(EntityTypeTags.IGNORES_POISON_AND_REGEN);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.RESISTANCE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.FIRE_RESISTANCE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.WATER_BREATHING_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.INVISIBILITY_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.BLINDNESS_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.NIGHT_VISION_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.HUNGER_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.WEAKNESS_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.POISON_IMMUNE)
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_RESISTANCE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_FIRE_RESISTANCE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_WATER_BREATHING);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_INVISIBILITY);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_BLINDNESS);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_NIGHT_VISION);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_HUNGER);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_WEAKNESS);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_POISON)
 			.add(EntityType.CAVE_SPIDER,
 					EntityType.SPIDER)
 			.forceAddTag(EntityTypeTags.IGNORES_POISON_AND_REGEN);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.WITHER_IMMUNE)
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_WITHER)
 			.add(EntityType.WITHER,
 					EntityType.WITHER_SKELETON);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.HEALTH_BOOST_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.ABSORPTION_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.SATURATION_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.GLOWING_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.LEVITATION_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.LUCK_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.UNLUCK_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.SLOW_FALLING_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.CONDUIT_POWER_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.DOLPHINS_GRACE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.BAD_OMEN_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.HERO_OF_THE_VILLAGE_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.DARKNESS_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.TRIAL_OMEN_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.RAID_OMEN_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.WIND_CHARGED_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.WEAVING_IMMUNE);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.OOZING_IMMUNE)
-			.forceAddTag(EntityTypeTags.IMMUNE_TO_OOZING);
-			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.INFESTED_IMMUNE)
-			.forceAddTag(EntityTypeTags.IMMUNE_TO_INFESTED);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_HEALTH_BOOST);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_ABSORPTION);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_SATURATION);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_GLOWING);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_LEVITATION);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_LUCK);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_UNLUCK);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_SLOW_FALLING);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_CONDUIT_POWER);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_DOLPHINS_GRACE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_BAD_OMEN);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_HERO_OF_THE_VILLAGE);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_DARKNESS);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_TRIAL_OMEN);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_RAID_OMEN);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_WIND_CHARGED);
+			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.IMMUNE_TO_WEAVING);
 			
 			this.getOrCreateTagBuilder(AquiferTags.EntityTypes.HOSTILE)
 			.add(EntityType.BLAZE,

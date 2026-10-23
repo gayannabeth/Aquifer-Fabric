@@ -1,22 +1,20 @@
 package gay.mountainspring.aquifer.mixin;
 
-import java.util.Map;
-import java.util.function.Predicate;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import gay.mountainspring.aquifer.item.component.AquiferComponentTypes;
 import gay.mountainspring.aquifer.tag.AquiferTags;
-import gay.mountainspring.aquifer.util.ItemUtil;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.Item;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.registry.tag.DamageTypeTags;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
@@ -25,13 +23,14 @@ public abstract class EntityMixin {
 		if (((Object) this) instanceof ItemEntity itemEntity) {
 			ItemStack stack = itemEntity.getStack();
 			
-			Map<TagKey<Item>, Predicate<DamageSource>> map = ItemUtil.itemTagDamageHandlers();
-			
-			for (TagKey<Item> tag : map.keySet()) {
-				if (stack.isIn(tag) && map.get(tag).test(damageSource)) {
-					info.setReturnValue(true);
-					break;
-				}
+			if (damageSource.isIn(DamageTypeTags.IS_FIRE) && (stack.isIn(AquiferTags.Items.FIRE_PROOF) || stack.contains(DataComponentTypes.FIRE_RESISTANT) )) {
+				info.setReturnValue(true);
+			} else if (damageSource.isIn(DamageTypeTags.IS_EXPLOSION) && (stack.isIn(AquiferTags.Items.EXPLOSION_PROOF) || stack.contains(AquiferComponentTypes.BLAST_RESISTANT))) {
+				info.setReturnValue(true);
+			} else if (damageSource.isOf(DamageTypes.CACTUS) && (stack.isIn(AquiferTags.Items.CACTUS_PROOF) || stack.contains(AquiferComponentTypes.CACTUS_RESISTANT))) {
+				info.setReturnValue(true);
+			} else if (damageSource.isOf(DamageTypes.OUT_OF_WORLD) && (stack.isIn(AquiferTags.Items.VOID_PROOF) || stack.contains(AquiferComponentTypes.AVOIDS_VOID))) {
+				info.setReturnValue(true);
 			}
 		}
 	}

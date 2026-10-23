@@ -8,7 +8,6 @@ public enum ColorOverflowHandler implements StringIdentifiable {
 	MOD("mod", i -> i & 255),
 	CLAMP("clamp", i -> MathHelper.clamp(i, 0, 255));
 	
-	@SuppressWarnings("deprecation")
 	public static final StringIdentifiable.EnumCodec<ColorOverflowHandler> CODEC = StringIdentifiable.createCodec(ColorOverflowHandler::values);
 	final String type;
 	private final Int2IntFunction function;
